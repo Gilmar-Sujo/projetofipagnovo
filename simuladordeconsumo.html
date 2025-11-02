@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Simulador de Consumo — PDF</title>
+  <style>
+    :root{
+      --maxw:980px;
+      --accent:#2b6cb0;
+      --bg:#f7f9fb;
+      --muted:#555;
+      --header:#0077b6;
+      --cta:#0077b6;
+      --card-shadow: 0 8px 30px rgba(15,15,15,0.07);
+    }
+    *{box-sizing:border-box}
+    body{
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      background:var(--bg);
+      padding:2rem;
+      display:flex;
+      justify-content:center;
+      -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+    }
+    .card{
+      width:100%;
+      max-width:var(--maxw);
+      background:#fff;
+      border-radius:8px;
+      padding:1.25rem;
+      box-shadow:var(--card-shadow);
+    }
+    h1{margin:0 0 .25rem;color:var(--accent)}
+    p.lead{margin:0 0 1rem;color:var(--muted)}
+    form{display:grid;gap:0.75rem}
+    .row{display:flex;gap:0.75rem}
+    .col{flex:1}
+    label{display:block;font-weight:600;font-size:.92rem;margin-bottom:.25rem}
+    input[type="text"], input[type="email"], input[type="number"], select, textarea {
+      width:100%;
+      padding:.6rem;
+      border:1px solid #e2e8f0;
+      border-radius:6px;
+      font-size:.95rem;
+      background:#fff;
+    }
+    textarea{min-height:120px;resize:vertical}
+    .small{font-size:.86rem;color:var(--muted);margin-top:.25rem}
+    .controls{display:flex;gap:.5rem;align-items:center;margin-top:.5rem;flex-wrap:wrap}
+    button{background:var(--accent);color:#fff;border:none;padding:.6rem .9rem;border-radius:6px;cursor:pointer}
+    button.secondary{background:#4a5568}
+    .status{margin-left: .5rem;font-size:.95rem;color:var(--muted)}
+    .consent{display:flex;gap:.5rem;align-items:center}
+    .notice{font-size:.9rem;color:#bf2e2e}
+    .success{color:green}
+    .error{color:#bf2e2e}
+    footer{margin-top:1rem;font-size:.85rem;color:var(--muted)}
+    @media(max-width:700px){.row{flex-direction:column}}
+
+    /* Header specific */
+    #title {
+      background: var(--header);
+      color: white;
+      text-align: center;
+      padding: 22px 0;
+      font-size: 26px;
+      font-weight: bold;
+      margin-left: -15px; margin-right: -15px;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      border-top-left-radius:8px; border-top-right-radius:8px;
+    }
+    #lead{ text-align: center; justify-content: center; margin-bottom: 12px; }
+
+    .grid {
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:18px;
+      margin-top:12px;
+    }
+    @media(max-width:1000px){ .grid { grid-template-columns: 1fr; } }
+
+    /* card blocks */
+    .panel { background:#fff; border-radius:8px; padding:14px; border:1px solid #eef2f6; box-shadow: 0 6px 18px rgba(10,10,10,0.03); }
+    .panel h3 { margin:0 0 8px; color:var(--header); font-size:1.05rem; }
+    .muted { color:var(--muted); font-size:0.95rem; }
+
+    .form-row { display:flex; gap:10px; }
+    .form-row .field { flex:1; }
+
+    .result {
+      margin-top:10px;
+      padding:12px;
+      border-radius:8px;
+      background: linear-gradient(180deg,#fbfbfb,#fff);
+      border:1px solid #eee;
+      font-size:1rem;
+      line-height:1.6;
+    }
+    .result p { margin:6px 0; font-size:15px; }
+
+    .helper { font-size:0.88rem; color:var(--muted); margin-top:6px; }
+
+    .charcount { font-size:0.85rem; color:var(--muted); text-align:right; }
+
+    /* footer styling */
+    footer {background:var(--header); color:white; padding:1.6rem 1rem; margin-top:1.25rem; margin-left: -15px; margin-right: -15px; border-bottom-left-radius:8px; border-bottom-right-radius:8px;}
+    .footer1 {text-align:center; margin-bottom:0.6rem;}
+    .footer1 h3 {margin-bottom:0.5rem; font-size:1.05rem;}
+    .footer1 ul {display:flex; gap:12px; justify-content:center; flex-wrap:wrap; padding:0; margin:0;}
+    .footer1 li a {color:white; padding:6px 12px; border-radius:6px; background:var(--cta); transition:0.3s; text-decoration:none; font-weight:600;}
+    .footer1 li a:hover {background:#18a8c5;}
+    .footer-bottom {text-align:center; font-size:0.9rem; margin-top:0.8rem;}
+    .footer1 li{list-style-type: none;}
+
+    /* Accessible focus */
+    input:focus, select:focus, textarea:focus, button:focus { outline:3px solid rgba(0,123,255,0.15); outline-offset:2px; }
+
+    /* small print-style helper */
+    .muted-small { color: #6b7280; font-size:0.9rem; }
+  </style>
+</head>
+<body>
+  <main class="card" role="main" aria-labelledby="title">
+    <h1 id="title">Simulador de Consumo</h1>
+    <p class="lead" id="lead">Calcula o consumo e o valor a pagar, com discriminação do imposto. Pode guardar o relatório em PDF.</p>
+
+    <div class="grid">
+      <!-- Left: explicação + dados pessoais -->
+      <section class="panel" aria-labelledby="howTitle">
+        <h3 id="howTitle">Como funciona &amp; Dados pessoais</h3>
+        <p class="muted">O simulador converte litros em m³, aplica um factor de perdas (opcional), calcula o valor sem imposto pela tarifa por m³ e depois aplica a taxa de imposto. Preencha os seus dados pessoais se deseja incluí-los no relatório de impressão/PDF.</p>
+
+        <hr style="margin:10px 0">
+
+        <h4 style="color:var(--cta); margin:8px 0;">Dados pessoais (opcional)</h4>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="userName">Nome completo</label>
+            <input id="userName" type="text" placeholder="Ex.: Maria Silva">
+          </div>
+          <div class="field">
+            <label for="userBI">BI</label>
+            <input id="userBI" type="text" placeholder="Ex.: A1234567">
+          </div>
+        </div>
+
+        <div class="form-row" style="margin-top:8px;">
+          <div class="field">
+            <label for="province">Província</label>
+            <input id="province" type="text" placeholder="Ex.: Maputo">
+          </div>
+          <div class="field">
+            <label for="district">Distrito</label>
+            <input id="district" type="text" placeholder="Ex.: Matola">
+          </div>
+        </div>
+
+        <div style="margin-top:8px;">
+          <label for="bairro">Bairro</label>
+          <input id="bairro" type="text" placeholder="Ex.: Bairro Central">
+        </div>
+
+        <div class="form-row" style="margin-top:8px;">
+          <div class="field">
+            <label for="userPhone">Telefone</label>
+            <input id="userPhone" type="text" placeholder="+258 8xx xxx xxx">
+          </div>
+          <div class="field">
+            <label for="userEmail">Email</label>
+            <input id="userEmail" type="email" placeholder="exemplo@dominio.com">
+          </div>
+        </div>
+
+        <div class="form-row" style="margin-top:8px;">
+          <div class="field">
+            <label for="userAddress">Morada (rua / número)</label>
+            <input id="userAddress" type="text" placeholder="Rua, Bairro, Cidade">
+          </div>
+          <div class="field">
+            <label for="ownerStatus">És proprietário?</label>
+            <select id="ownerStatus">
+              <option value="">— Seleciona —</option>
+              <option value="Sim">Sim — Proprietário</option>
+              <option value="Não">Não — Arrendatário / Outro</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="margin-top:8px;" class="consent">
+          <input id="includePersonal" type="checkbox" />
+          <label for="includePersonal" class="muted-small">Incluir dados pessoais no relatório PDF</label>
+        </div>
+
+        <div style="margin-top:12px;" class="helper">
+          <strong>Privacidade:</strong> Os dados pessoais inseridos são usados apenas localmente para gerar o PDF. Não são enviados para lado nenhum a menos que tu o faças.
+        </div>
+      </section>
+
+      <!-- Right: calculadora -->
+      <aside class="panel" aria-labelledby="calcTitle">
+        <h3 id="calcTitle">Calculadora</h3>
+
+        <form id="simForm" onsubmit="return false;" aria-describedby="formDesc">
+          <div id="formDesc" class="helper">Preenche os campos e clica em <strong>Calcular</strong>.</div>
+
+          <div class="form-row" style="margin-top:10px;">
+            <div class="field">
+              <label for="residents">Número de residentes</label>
+              <input id="residents" type="number" min="1" step="1" value="4" required aria-required="true">
+            </div>
+            <div class="field">
+              <label for="litersPerPerson">Consumo diário por pessoa (L)</label>
+              <input id="litersPerPerson" type="number" min="1" step="1" value="150" required>
+            </div>
+          </div>
+
+          <div class="form-row" style="margin-top:8px;">
+            <div class="field">
+              <label for="days">Dias (período)</label>
+              <input id="days" type="number" min="1" max="366" step="1" value="30" required>
+            </div>
+            <div class="field">
+              <label for="tariff">Tarifa por m³ (MT)</label>
+              <input id="tariff" type="number" min="0" step="0.01" value="22.80" required>
+            </div>
+          </div>
+
+          <div class="form-row" style="margin-top:8px;">
+            <div class="field">
+              <label for="lossFactor">Fator de perda / reserva (%)</label>
+              <input id="lossFactor" type="number" min="0" max="100" step="0.1" value="0">
+            </div>
+            <div class="field">
+              <label for="taxRate">Taxa de imposto (%)</label>
+              <input id="taxRate" type="number" min="0" max="100" step="0.01" value="12.75">
+            </div>
+          </div>
+
+          <div style="margin-top:10px;">
+            <label for="note">Nota (opcional)</label>
+            <textarea id="note" placeholder="Ex.: período considerado, observações..."></textarea>
+            <div class="charcount" id="charcount">0 / 500</div>
+          </div>
+
+          <div class="controls" style="margin-top:12px;">
+            <button id="calcBtn" type="button">Calcular</button>
+            <button id="resetBtn" class="secondary" type="button">Limpar</button>
+            <button id="copyBtn" class="secondary" type="button" title="Copiar resultado">Copiar Resultado</button>
+            <!-- ADICIONADO: botão para enviar apenas a nota por email -->
+            <button id="sendEmailBtn" class="secondary" type="button" title="Enviar Nota por Email">Enviar Nota por Email</button>
+            <button id="savePdfBtn" class="secondary" type="button" title="Guardar PDF">Guardar PDF</button>
+            <div id="status" class="status" role="status" aria-live="polite"></div>
+          </div>
+
+          <div class="result" id="resultBox" aria-live="polite" style="display:none;">
+            <!-- Aqui mostramos em estilo idêntico ao pedido -->
+            <p id="lineConsumption"><strong>O consumo é de:</strong> <span class="muted">—</span></p>
+            <p id="lineValueNoTax"><strong>Valor a pagar sem imposto:</strong> <span class="muted">—</span></p>
+            <p id="lineTax"><strong>Imposto:</strong> <span class="muted">—</span></p>
+            <p id="lineTotal"><strong>Valor Total a pagar incluindo o Imposto:</strong> <span class="muted">—</span></p>
+            <p id="resNote" class="muted" style="margin-top:8px"></p>
+          </div>
+        </form>
+      </aside>
+    </div>
+
+    <footer>
+      <div class="footer1">
+        <h3>Siga-nos em:</h3>
+        <ul>
+          <li><a href="https://www.facebook.com/fipag/?locale=pt_BR" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://x.com/fipagmoz" target="_blank" rel="noopener">Twitter / X</a></li>
+          <li><a href="https://www.instagram.com/fipag/" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">© 2025 FIPAG - Fundo de Investimento e Património do Abastecimento de Água</div>
+    </footer>
+  </main>
+
+  <!-- html2pdf bundle -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+
+  <script>
+    (function(){
+      const $ = id => document.getElementById(id);
+      const calcBtn = $('calcBtn');
+      const resetBtn = $('resetBtn');
+      const copyBtn = $('copyBtn');
+      const printBtn = $('printBtn');
+      const sendEmailBtn = $('sendEmailBtn'); // novo botão
+      const savePdfBtn = $('savePdfBtn');
+      const resultBox = $('resultBox');
+      const lineConsumption = $('lineConsumption');
+      const lineValueNoTax = $('lineValueNoTax');
+      const lineTax = $('lineTax');
+      const lineTotal = $('lineTotal');
+      const resNote = $('resNote');
+      const charcount = $('charcount');
+      const note = $('note');
+      const statusEl = $('status');
+
+      // personal
+      const userName = $('userName');
+      const userBI = $('userBI');
+      const province = $('province');
+      const district = $('district');
+      const bairro = $('bairro');
+      const userAddress = $('userAddress');
+      const userPhone = $('userPhone');
+      const userEmail = $('userEmail');
+      const ownerStatus = $('ownerStatus');
+      const includePersonal = $('includePersonal');
+
+      function formatMT(v){
+        const n = Number(v) || 0;
+        const formatted = n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        return formatted.replace('.',',') + ' MT';
+      }
+
+      function formatNumberWithComma(v, decimals=2){
+        const n = Number(v) || 0;
+        const formatted = n.toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+        return formatted.replace('.',',');
+      }
+
+      function showStatus(text, cls){
+        statusEl.textContent = text || '';
+        statusEl.className = 'status ' + (cls||'');
+      }
+
+      function getNumber(id){
+        const el = $(id);
+        const v = parseFloat(el.value);
+        return Number.isFinite(v) ? v : 0;
+      }
+
+      function clearResult(){
+        resultBox.style.display = 'none';
+        lineConsumption.innerHTML = `<strong>O consumo é de:</strong> <span class="muted">—</span>`;
+        lineValueNoTax.innerHTML = `<strong>Valor a pagar sem imposto:</strong> <span class="muted">—</span>`;
+        lineTax.innerHTML = `<strong>Imposto:</strong> <span class="muted">—</span>`;
+        lineTotal.innerHTML = `<strong>Valor Total a pagar incluindo o Imposto:</strong> <span class="muted">—</span>`;
+        resNote.textContent = '';
+      }
+
+      // cálculo
+      calcBtn.addEventListener('click', function(){
+        showStatus('', '');
+        const residents = Math.max(0, Math.round(getNumber('residents')));
+        const litersPerPerson = Math.max(0, getNumber('litersPerPerson'));
+        const days = Math.max(1, Math.round(getNumber('days')));
+        const tariff = Math.max(0, getNumber('tariff'));
+        const lossFactorPct = Math.max(0, Math.min(100, getNumber('lossFactor')));
+        const taxRatePct = Math.max(0, Math.min(100, getNumber('taxRate')));
+
+        if (residents <= 0 || litersPerPerson <= 0) {
+          alert('Por favor introduz um número de residentes e consumo diário válidos (maiores que zero).');
+          return;
+        }
+
+        // cálculo litros -> m3
+        const totalLiters = residents * litersPerPerson * days;
+        let consumption_m3 = (totalLiters / 1000) * (1 + (lossFactorPct / 100));
+        consumption_m3 = Math.round(consumption_m3 * 1000) / 1000;
+
+        // Valor sem imposto
+        const valueNoTax = consumption_m3 * tariff;
+
+        // Imposto
+        const taxValue = valueNoTax * (taxRatePct / 100);
+
+        // Total
+        const totalValue = valueNoTax + taxValue;
+
+        // Formatação
+        let consumoDisplay = consumption_m3.toFixed(3);
+        consumoDisplay = consumoDisplay.replace(/\.?0+$/,'');
+        consumoDisplay = consumoDisplay.replace('.',',') + ' m³';
+
+        lineConsumption.innerHTML = `<strong>O consumo é de:</strong> ${consumoDisplay}`;
+        lineValueNoTax.innerHTML = `<strong>Valor a pagar sem imposto:</strong> ${formatMT(valueNoTax)}`;
+        lineTax.innerHTML = `<strong>Imposto:</strong> ${formatMT(taxValue)}`;
+        lineTotal.innerHTML = `<strong>Valor Total a pagar incluindo o Imposto:</strong> ${formatMT(totalValue)}`;
+
+        resNote.textContent = note.value ? `Nota: ${note.value}` : '';
+        resultBox.style.display = 'block';
+      });
+
+      // limpar
+      resetBtn.addEventListener('click', function(){
+        $('residents').value = 4;
+        $('litersPerPerson').value = 150;
+        $('days').value = 30;
+        $('tariff').value = 22.80;
+        $('lossFactor').value = 0;
+        $('taxRate').value = 12.75;
+        note.value = '';
+        charcount.textContent = '0 / 500';
+        userName.value = '';
+        userBI.value = '';
+        province.value = '';
+        district.value = '';
+        bairro.value = '';
+        userAddress.value = '';
+        userPhone.value = '';
+        userEmail.value = '';
+        ownerStatus.value = '';
+        includePersonal.checked = false;
+        clearResult();
+        showStatus('', '');
+      });
+
+      // copiar resultado
+      copyBtn.addEventListener('click', function(){
+        if (resultBox.style.display === 'none') {
+          alert('Não há resultado para copiar. Calcula primeiro.');
+          return;
+        }
+        const personalParts = [
+          `Nome: ${userName.value || '-'}`,
+          `BI: ${userBI.value || '-'}`,
+          `Província: ${province.value || '-'}`,
+          `Distrito: ${district.value || '-'}`,
+          `Bairro: ${bairro.value || '-'}`,
+          `Morada: ${userAddress.value || '-'}`,
+          `Proprietário: ${ownerStatus.value || '-'}`,
+          `Telefone: ${userPhone.value || '-'}`,
+          `Email: ${userEmail.value || '-'}`
+        ];
+        const textParts = [
+          lineConsumption.textContent,
+          lineValueNoTax.textContent,
+          lineTax.textContent,
+          lineTotal.textContent,
+          resNote.textContent || ''
+        ];
+        let text = textParts.join('\n');
+        if (includePersonal.checked) {
+          text = personalParts.join('\n') + '\n\n' + text;
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(()=> {
+            showStatus('Resultado copiado para a área de transferência.','success');
+            setTimeout(()=>showStatus('',''), 3500);
+          }).catch(()=> fallbackCopy(text));
+        } else fallbackCopy(text);
+      });
+
+      function fallbackCopy(text){
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand('copy');
+          showStatus('Resultado copiado para a área de transferência.','success');
+          setTimeout(()=>showStatus('',''), 3500);
+        } catch(e){
+          alert('Não foi possível copiar automaticamente. Seleciona o texto manualmente.');
+        }
+        document.body.removeChild(ta);
+      }
+
+      // contador de caracteres para nota
+      note.addEventListener('input', function(){
+        const max = 500;
+        const len = Math.min(note.value.length, max);
+        if (note.value.length > max) note.value = note.value.slice(0, max);
+        charcount.textContent = `${len} / ${max}`;
+      });
+
+      // imprimir (abre janela de impressão limpa)
+      printBtn.addEventListener('click', function(){
+        if (resultBox.style.display === 'none') {
+          alert('Não há resultado para imprimir. Calcula primeiro.');
+          return;
+        }
+        generateReportHtmlAndOpen({ autoPrint: true });
+      });
+
+      // ENVIAR NOTA POR EMAIL (apenas texto da nota + data/hora) - botão adicionado sem alterar o resto
+      sendEmailBtn.addEventListener('click', function(){
+        // enviamos apenas o conteúdo do textarea "note" e a data/hora
+        const noteText = note.value.trim();
+        if (!noteText) {
+          alert('A nota está vazia. Por favor escreve a nota que desejas enviar.');
+          return;
+        }
+        const to = 'info@fipag.co.mz';
+        const subject = encodeURIComponent('Nota — Simulador de Consumo');
+        const now = new Date();
+        const dateStr = now.toLocaleString();
+        const bodyRaw = `Nota (enviada pelo Simulador de Consumo):\n\n${noteText}\n\nEmitido em: ${dateStr}`;
+        const body = encodeURIComponent(bodyRaw);
+        // usar mailto para abrir cliente de email com corpo pronto (apenas nota + data)
+        window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+      });
+
+      // guardar PDF usando html2pdf (gera elemento temporário e converte)
+      savePdfBtn.addEventListener('click', async function(){
+        if (resultBox.style.display === 'none') {
+          alert('Não há resultado para guardar. Calcula primeiro.');
+          return;
+        }
+        showStatus('A preparar PDF...', '');
+        try {
+          const reportEl = buildReportElementForPdf();
+          document.body.appendChild(reportEl);
+
+          const opt = {
+            margin:       [10, 10, 10, 10],
+            filename:     generateFilename(),
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2, useCORS: true },
+            jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+          };
+
+          await html2pdf().set(opt).from(reportEl).save();
+
+          document.body.removeChild(reportEl);
+          showStatus('PDF gerado com sucesso. Ficheiro descarregado.','success');
+          setTimeout(()=>showStatus('',''), 4000);
+        } catch (err) {
+          console.error(err);
+          showStatus('Erro ao gerar PDF: ' + (err.message || err),'error');
+        }
+      });
+
+      // constrói o elemento DOM do relatório (usado pelo html2pdf)
+      function buildReportElementForPdf(){
+        const now = new Date();
+        const dateStr = now.toLocaleString();
+        const includeP = includePersonal.checked;
+        const consumoTxt = lineConsumption.textContent;
+        const noTaxTxt = lineValueNoTax.textContent;
+        const taxTxt = lineTax.textContent;
+        const totalTxt = lineTotal.textContent;
+        const noteTxt = resNote.textContent || '';
+
+        const personal = {
+          name: userName.value || '',
+          bi: userBI.value || '',
+          province: province.value || '',
+          district: district.value || '',
+          bairro: bairro.value || '',
+          address: userAddress.value || '',
+          phone: userPhone.value || '',
+          email: userEmail.value || '',
+          owner: ownerStatus.value || ''
+        };
+
+        const container = document.createElement('div');
+        container.style.width = '210mm';
+        container.style.padding = '12mm';
+        container.style.boxSizing = 'border-box';
+        container.style.background = '#fff';
+        container.style.color = '#111';
+        container.style.fontFamily = 'Arial, Helvetica, sans-serif';
+        container.style.fontSize = '12pt';
+        container.id = 'pdf-report-temp';
+
+        const h1 = document.createElement('h1');
+        h1.textContent = 'Relatório de Consumo';
+        h1.style.color = '#023e8a';
+        h1.style.margin = '0 0 6px';
+        h1.style.fontSize = '18pt';
+        container.appendChild(h1);
+
+        const meta = document.createElement('div');
+        meta.textContent = 'Emitido em: ' + dateStr;
+        meta.style.color = '#444';
+        meta.style.marginBottom = '10px';
+        container.appendChild(meta);
+
+        if (includeP) {
+          const sec = document.createElement('div');
+          sec.style.border = '1px solid #e6eef8';
+          sec.style.padding = '8px';
+          sec.style.borderRadius = '6px';
+          sec.style.marginBottom = '10px';
+
+          const h2 = document.createElement('h2');
+          h2.textContent = 'Dados do Utilizador';
+          h2.style.margin = '0 0 6px';
+          h2.style.color = '#0077b6';
+          h2.style.fontSize = '13pt';
+          sec.appendChild(h2);
+
+          const addRow = (label, value) => {
+            const d = document.createElement('div');
+            d.innerHTML = '<strong>' + escapeHtml(label) + ':</strong> ' + escapeHtml(value || '-');
+            d.style.marginBottom = '4px';
+            d.style.fontSize = '11pt';
+            sec.appendChild(d);
+          };
+          addRow('Nome', personal.name);
+          addRow('BI', personal.bi);
+          addRow('Província', personal.province);
+          addRow('Distrito', personal.district);
+          addRow('Bairro', personal.bairro);
+          addRow('Morada', personal.address);
+          addRow('Proprietário', personal.owner);
+          addRow('Telefone', personal.phone);
+          addRow('Email', personal.email);
+
+          container.appendChild(sec);
+        }
+
+        const sec2 = document.createElement('div');
+        sec2.style.border = '1px solid #e6eef8';
+        sec2.style.padding = '8px';
+        sec2.style.borderRadius = '6px';
+        sec2.style.marginBottom = '10px';
+
+        const h3 = document.createElement('h2');
+        h3.textContent = 'Resumo do Cálculo';
+        h3.style.margin = '0 0 6px';
+        h3.style.color = '#0077b6';
+        h3.style.fontSize = '13pt';
+        sec2.appendChild(h3);
+
+        const consumoDiv = document.createElement('div');
+        consumoDiv.style.marginBottom = '6px';
+        consumoDiv.style.fontSize = '12pt';
+        consumoDiv.innerHTML = '<strong>' + escapeHtml(consumoTxt) + '</strong>';
+        sec2.appendChild(consumoDiv);
+
+        const vNoTax = document.createElement('div');
+        vNoTax.style.marginBottom = '6px';
+        vNoTax.style.fontSize = '12pt';
+        vNoTax.innerHTML = escapeHtml(noTaxTxt);
+        sec2.appendChild(vNoTax);
+
+        const vTax = document.createElement('div');
+        vTax.style.marginBottom = '6px';
+        vTax.style.fontSize = '12pt';
+        vTax.innerHTML = escapeHtml(taxTxt);
+        sec2.appendChild(vTax);
+
+        const vTotal = document.createElement('div');
+        vTotal.style.marginBottom = '6px';
+        vTotal.style.fontSize = '12pt';
+        vTotal.innerHTML = '<strong>' + escapeHtml(totalTxt) + '</strong>';
+        sec2.appendChild(vTotal);
+
+        container.appendChild(sec2);
+
+        if (noteTxt) {
+          const sec3 = document.createElement('div');
+          sec3.style.border = '1px solid #e6eef8';
+          sec3.style.padding = '8px';
+          sec3.style.borderRadius = '6px';
+          sec3.style.marginBottom = '10px';
+          const h4 = document.createElement('h2');
+          h4.textContent = 'Nota';
+          h4.style.margin = '0 0 6px';
+          h4.style.color = '#0077b6';
+          h4.style.fontSize = '13pt';
+          sec3.appendChild(h4);
+          const nn = document.createElement('div');
+          nn.style.fontSize = '11pt';
+          nn.textContent = noteTxt;
+          sec3.appendChild(nn);
+          container.appendChild(sec3);
+        }
+
+        const footer = document.createElement('div');
+        footer.style.fontSize = '10pt';
+        footer.style.color = '#333';
+        footer.style.marginTop = '12px';
+        footer.innerHTML = '<div>Este documento é uma estimativa gerada pelo simulador. Valores reais podem variar consoante leituras e tarifas oficiais.</div>';
+        const sign = document.createElement('div');
+        sign.style.marginTop = '20px';
+        sign.innerHTML = '<div>Assinatura:</div><div style="margin-top:20px;border-top:1px solid #999;width:320px;padding-top:6px;"></div>';
+        footer.appendChild(sign);
+        container.appendChild(footer);
+
+        return container;
+      }
+
+      // gerar nome de ficheiro
+      function generateFilename(){
+        const pad = n => String(n).padStart(2,'0');
+        const d = new Date();
+        const yyyy = d.getFullYear();
+        const mm = pad(d.getMonth()+1);
+        const dd = pad(d.getDate());
+        const hh = pad(d.getHours());
+        const min = pad(d.getMinutes());
+        const namePart = (userName.value || 'relatorio').replace(/\s+/g,'_').replace(/[^\w\-]/g,'').toLowerCase();
+        return `relatorio-consumo_${namePart}_${yyyy}${mm}${dd}_${hh}${min}.pdf`;
+      }
+
+      // escape básico para inserir texto em innerHTML (usado quando necessário)
+      function escapeHtml(s){
+        if(!s) return '';
+        return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+      }
+
+      // função que gera HTML e abre em nova janela (usada pelo imprimir)
+      function generateReportHtmlAndOpen(opts){
+        const now = new Date();
+        const dateStr = now.toLocaleString();
+        const includeP = includePersonal.checked;
+        const consumoTxt = lineConsumption.textContent;
+        const noTaxTxt = lineValueNoTax.textContent;
+        const taxTxt = lineTax.textContent;
+        const totalTxt = lineTotal.textContent;
+        const noteTxt = resNote.textContent || '';
+        const personal = {
+          name: userName.value || '',
+          bi: userBI.value || '',
+          province: province.value || '',
+          district: district.value || '',
+          bairro: bairro.value || '',
+          address: userAddress.value || '',
+          phone: userPhone.value || '',
+          email: userEmail.value || '',
+          owner: ownerStatus.value || ''
+        };
+
+        const reportHtml = `
+<!doctype html>
+<html lang="pt-PT">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Relatório</title>
+<style>
+  body{font-family:Arial, Helvetica, sans-serif; color:#111; margin:20px;}
+  h1{color:#023e8a; font-size:20px; margin-bottom:0;}
+  .meta{margin-top:6px; color:#444; font-size:0.95rem;}
+  .section{margin-top:18px; padding:12px; border-radius:8px; border:1px solid #e6eef8;}
+  .section h2{margin:0 0 8px; color:#0077b6; font-size:16px;}
+  .line{margin:6px 0; font-size:1rem;}
+  .bold{font-weight:700;}
+  .footer{margin-top:26px; font-size:0.9rem; color:#333;}
+  .signature { margin-top:26px; }
+  .signature .sig-line { margin-top:40px; border-top:1px solid #999; width:320px; padding-top:6px; }
+  @media print { button#printButton{display:none} }
+</style>
+</head>
+<body>
+  <div>
+    <h1>Relatório de Consumo</h1>
+    <div class="meta">Emitido em: ${escapeHtml(dateStr)}</div>
+    ${ includeP ? `
+    <div class="section">
+      <h2>Dados do Utilizador</h2>
+      <div><strong>Nome:</strong> ${escapeHtml(personal.name)}</div>
+      <div><strong>BI:</strong> ${escapeHtml(personal.bi)}</div>
+      <div><strong>Província:</strong> ${escapeHtml(personal.province)}</div>
+      <div><strong>Distrito:</strong> ${escapeHtml(personal.district)}</div>
+      <div><strong>Bairro:</strong> ${escapeHtml(personal.bairro)}</div>
+      <div><strong>Morada:</strong> ${escapeHtml(personal.address)}</div>
+      <div><strong>Proprietário:</strong> ${escapeHtml(personal.owner)}</div>
+      <div><strong>Telefone:</strong> ${escapeHtml(personal.phone)}</div>
+      <div><strong>Email:</strong> ${escapeHtml(personal.email)}</div>
+    </div>` : '' }
+    <div class="section">
+      <h2>Resumo do Cálculo</h2>
+      <div class="line"><strong>${escapeHtml(consumoTxt)}</strong></div>
+      <div class="line">${escapeHtml(noTaxTxt)}</div>
+      <div class="line">${escapeHtml(taxTxt)}</div>
+      <div class="line"><strong>${escapeHtml(totalTxt)}</strong></div>
+    </div>
+    ${ noteTxt ? `<div class="section"><h2>Nota</h2><div class="line">${escapeHtml(noteTxt)}</div></div>` : '' }
+    <div class="footer">
+      <div>Este documento é uma estimativa gerada pelo simulador. Valores reais podem variar consoante leituras e tarifas oficiais.</div>
+      <div class="signature">
+        <div>Assinatura:</div>
+        <div class="sig-line"></div>
+      </div>
+    </div>
+    <div style="margin-top:18px;"><button id="printButton" onclick="window.print();">Imprimir</button></div>
+  </div>
+</body>
+</html>
+        `;
+
+        const w = window.open('', '_blank', 'noopener,noreferrer');
+        if(!w){
+          alert('O seu navegador bloqueou a abertura da janela de impressão. Permite pop-ups e tenta novamente.');
+          return;
+        }
+        w.document.open();
+        w.document.write(reportHtml);
+        w.document.close();
+        w.focus();
+        if(opts && opts.autoPrint){
+          setTimeout(()=> { try{ w.print(); } catch(e){} }, 700);
+        }
+      }
+
+      // init
+      clearResult();
+      charcount.textContent = '0 / 500';
+    })();
+  </script>
+</body>
+</html>

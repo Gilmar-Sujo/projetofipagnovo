@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Fundo de Investimento e Património do Abastecimento de Água">
+<meta name="keywords" content="FIPAG,Fundo de Investimento e Património do Abastecimento de Água, fipag">
+<meta name="author" content="GILMAR DOS SANTOS RIBEIRO">
+<link rel="icon" href="./image/icon6.png" type="image/png" sizes="128x128">
+<title>FIPAG</title>
+
+<style>
+    /* ===== RESET ===== */
+    * {margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+    body {background:#f4f7fa; color:#333;}
+    a {text-decoration:none; color:inherit;}
+    ul {list-style:none;}
+
+    /* ===== HEADER ===== */
+    header {background:#0077b6; color:white; box-shadow:0 4px 10px rgba(0,0,0,0.1);}
+    .header-container {display:flex; justify-content:space-between; align-items:center; padding:10px 20px; flex-wrap:wrap; position:relative;}
+    
+    .logo {display:flex; align-items:center; gap:10px;}
+    .logo img {height:60px;}
+    .logo h1 {font-size:2rem; margin:0; color:white;}
+
+    /* ===== MENU ===== */
+    nav {flex:1; text-align:center;}
+    nav ul {display:flex; justify-content:center; gap:10px; flex-wrap:wrap;}
+    nav ul li {position:relative;}
+    nav ul li a {padding:8px 15px; background:#0096c7; border-radius:8px; font-weight:600; color:white; transition:0.3s; display:block;}
+    nav ul li a:hover {background:#023e8a; color:white;}
+
+    /* ===== DROPDOWN ===== */
+    .dropdown-content {display:none; position:absolute; top:100%; left:50%; transform:translateX(-50%); background:#0096c7; min-width:200px; border-radius:8px; box-shadow:0 4px 8px rgba(0,0,0,0.2); z-index:1000;}
+    .dropdown-content a {display:block; padding:10px; color:white; transition:0.2s;}
+    .dropdown-content a:hover {background:#023e8a;}
+    .dropdown.show .dropdown-content {display:block;}
+
+    /* ===== TEXTO PRINCIPAL ===== */
+    #text {
+        max-width:1000px; 
+        margin:2rem auto; 
+        padding:2rem; 
+        text-align:justify; 
+        background:white; 
+        border-radius:10px; 
+        box-shadow:0 8px 25px rgba(0,0,0,0.1); 
+        font-size:1.1rem; 
+        line-height:1.8;
+    }
+
+    /* ===== VIDEO ===== */
+    #div2 {max-width:900px; margin:2rem auto; text-align:center; border-radius:10px; overflow:hidden; box-shadow:0 8px 25px rgba(0,0,0,0.15);}
+    #div2 video {border-radius:10px; width:100%; height:auto;}
+
+    /* ===== FOOTER ===== */
+    footer {background:#023e8a; color:white; padding:2rem 1rem; margin-top:3rem;}
+    .footer1 {text-align:center; margin-bottom:1rem;}
+    .footer1 h3 {margin-bottom:0.5rem; font-size:1.2rem;}
+    .footer1 ul {display:flex; gap:15px; justify-content:center; flex-wrap:wrap;}
+    .footer1 li a {color:white; padding:6px 12px; border-radius:6px; background:#0077b6; transition:0.3s;}
+    .footer1 li a:hover {background:#00b4d8;}
+    .footer-bottom {text-align:center; font-size:0.9rem; margin-top:1rem;}
+
+    /* ===== RESPONSIVO ===== */
+    @media(max-width:768px){
+        .header-container {flex-direction:column; align-items:flex-start;}
+        nav ul {flex-direction:column; width:100%; margin-top:10px;}
+        nav ul li {width:100%;}
+        nav ul li a {width:100%; text-align:center;}
+        .dropdown-content {position:static; transform:none; margin-top:5px;}
+        #text {padding:1rem; font-size:1rem;}
+        #div2 video {width:100%; height:auto;}
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <div class="logo">
+            <a href="index.html"><img src="./image/icon3.png" alt="Logo FIPAG"></a>
+            <h1>💧FIPAG</h1>
+        </div>
+
+        <!-- MENU PRINCIPAL -->
+        <nav>
+            <ul>
+                <li><a href="areadocliente.html">Área do Cliente</a></li>
+                <li><a href="criticasesesugestao.html">Críticas & Sugestões</a></li>
+                <li><a href="contactosefaleconnosco.html">Contacte & Fale connosco</a></li>
+                <li><a href="noticias.html">Notícias</a></li>
+                <li><a href="https://portaldogoverno.gov.mz/ministerios/ministerio-das-obras-publicas-habitacao-e-recursos-hidricos/">(MOPH)</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Sobre Nós</a>
+                    <div class="dropdown-content">
+                        <a href="sobrefipag.html">Sobre o FIPAG</a>
+                        <a href="histiorialdofipag.html">Historial do FIPAG</a>
+                        <a href="mensagemdg.html">Mensagem do DG</a>
+                        <a href="politicasdofipag.html">Políticas e Vectores de Acção</a>
+                        <a href="estruturaorganica.html">Estrutura Orgânica</a>
+                    </div>
+                </li>
+                <li><a href="areasdeactuacao.html">Áreas de Actuação</a></li>
+                <li><a href="projectos.html">Projectos</a></li>
+                <li><a href="responsablidadesocial.html">Resp Social</a></li>
+                <li><a href="simuladordeconsumo.html">Sulador de consumo</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- TEXTO PRINCIPAL -->
+<div id="text">
+    <p>
+        Seja bem-vindo ao FIPAG — Fundo de Investimento e Património do Abastecimento de Água.
+        Trabalhamos com dedicação e compromisso para garantir o acesso sustentável, seguro e de qualidade à água potável para todos os moçambicanos.
+        O nosso objetivo é promover o desenvolvimento das infraestruturas de abastecimento, fortalecer a gestão dos recursos hídricos e assegurar que cada gota de água chegue onde é mais necessária — às famílias, às comunidades e às indústrias que fazem Moçambique crescer.
+        Aqui encontrará informações sobre os nossos projetos, programas e iniciativas sociais, que reforçam o papel do FIPAG como parceiro estratégico no progresso nacional e na melhoria das condições de vida das populações.
+    </p>
+</div>
+
+<!-- VIDEO -->
+<div id="div2">
+    <video autoplay loop muted controls>
+        <source src="./video/video.mp4" type="video/mp4">
+        O seu navegador não suporta vídeos em HTML5.
+    </video>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer1">
+        <h3>Siga-nos em:</h3>
+        <ul>
+            <li><a href="https://www.facebook.com/fipag/?locale=pt_BR">Facebook</a></li>
+            <li><a href="https://x.com/fipagmoz">Twitter / X</a></li>
+            <li><a href="https://www.instagram.com/fipag/">Instagram</a></li>
+        </ul>
+    </div>
+    <div class="footer-bottom">
+        © 2025 FIPAG - Fundo de Investimento e Património do Abastecimento de Água
+    </div>
+</footer>
+
+<script>
+    // ALERTA DE BOAS-VINDAS
+    window.addEventListener('load', () => {
+        alert("Bem-vindo ao site do FIPAG!");
+    });
+
+    // TOGGLE DROPDOWN
+    const dropbtn = document.querySelector(".dropbtn");
+    const dropdown = document.querySelector(".dropdown");
+
+    dropbtn.addEventListener("click", () => {
+        dropdown.classList.toggle("show");
+    });
+
+    // FECHAR DROPDOWN AO CLICAR FORA
+    window.onclick = function(e) {
+        if (!e.target.matches('.dropbtn')) {
+            if(dropdown.classList.contains('show')) {
+                dropdown.classList.remove('show');
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

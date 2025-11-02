@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Crítica e Sugestão</title>
+  <style>
+    :root{
+      --maxw:900px;
+      --accent:#2b6cb0;
+      --bg:#f7f9fb;
+      --muted:#555;
+    }
+    *{box-sizing:border-box}
+    body{
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      background:var(--bg);
+      padding:2rem;
+      display:flex;
+      justify-content:center;
+    }
+    .card{
+      width:100%;
+      max-width:var(--maxw);
+      background:#fff;
+      border-radius:8px;
+      padding:1.25rem;
+      box-shadow:0 8px 30px rgba(15,15,15,0.07);
+    }
+    h1{margin:0 0 .25rem;color:var(--accent)}
+    p.lead{margin:0 0 1rem;color:var(--muted)}
+    form{display:grid;gap:0.75rem}
+    .row{display:flex;gap:0.75rem}
+    .col{flex:1}
+    label{display:block;font-weight:600;font-size:.92rem;margin-bottom:.25rem}
+    input[type="text"], input[type="email"], select, textarea {
+      width:100%;
+      padding:.6rem;
+      border:1px solid #e2e8f0;
+      border-radius:6px;
+      font-size:.95rem;
+    }
+    textarea{min-height:300px;resize:vertical}
+    .small{font-size:.86rem;color:var(--muted);margin-top:.25rem}
+    .controls{display:flex;gap:.5rem;align-items:center;margin-top:.5rem}
+    button{background:var(--accent);color:#fff;border:none;padding:.6rem .9rem;border-radius:6px;cursor:pointer}
+    button.secondary{background:#4a5568}
+    .status{margin-left: .5rem;font-size:.95rem;color:var(--muted)}
+    .consent{display:flex;gap:.5rem;align-items:center}
+    .notice{font-size:.9rem;color:#bf2e2e}
+    .success{color:green}
+    .error{color:#bf2e2e}
+    footer{margin-top:1rem;font-size:.85rem;color:var(--muted)}
+    @media(max-width:700px){.row{flex-direction:column}}
+
+    #title {
+      background: #0077b6;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 26px;
+      font-weight: bold;
+      background:#023e8a; color:white; padding:2rem 1rem;  margin-left: -15px; margin-right: -15px;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    #lead{
+        text-align: center;
+        justify-content: center;
+    }
+    .charcount { font-size:0.85rem; color:var(--muted); text-align:right; }
+    footer {background:#023e8a; color:white; padding:2rem 1rem; margin-top:3rem; margin-left: -15px; margin-right: -15px;}
+    .footer1 {text-align:center; margin-bottom:1rem;}
+    .footer1 h3 {margin-bottom:0.5rem; font-size:1.2rem;}
+    .footer1 ul {display:flex; gap:15px; justify-content:center; flex-wrap:wrap;}
+    .footer1 li a {color:white; padding:6px 12px; border-radius:6px; background:#0077b6; transition:0.3s; text-decoration:none;}
+    .footer1 li a:hover {background:#00b4d8;}
+    .footer-bottom {text-align:center; font-size:0.9rem; margin-top:1rem;}
+    .footer1 li{list-style-type: none;}
+  </style>
+</head>
+<body>
+  <main class="card" role="main" aria-labelledby="title">
+    <h1 id="title">Crítica e Sugestão</h1>
+    <p class="lead">Preencha o formulário abaixo para enviar a sua crítica ou sugestão ao FIPAG. Escolha o método de envio (ver instruções).</p>
+
+    <form id="feedbackForm" autocomplete="on" novalidate>
+      <div class="row">
+        <div class="col">
+          <label for="name">Nome completo</label>
+          <input id="name" name="name" type="text" placeholder="Insira o seu nome" required />
+        </div>
+        <div class="col">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="Insira o seu e-mail" required />
+        </div>
+      </div>
+
+      <div>
+        <label for="phone">Telefone (opcional)</label>
+        <input id="phone" name="phone" type="text" placeholder="Insira o seu Telefone" />
+      </div>
+
+      <div>
+        <label for="topic">Assunto / Área</label>
+        <select id="topic" name="topic" required>
+          <option value="">— Seleciona e o tipo de Serviço—</option>
+          <option>Fatura / Pagamento</option>
+          <option>Qualidade da Água</option>
+          <option>Interrupção / Avaria</option>
+          <option>Serviço ao Cliente</option>
+          <option>Ligação / Instalação</option>
+          <option>Outro</option>
+        </select>
+        <div class="small">Escolha a área que melhor descreve a sua crítica ou sugestão.</div>
+      </div>
+
+      <div>
+        <label for="type">Tipo</label>
+        <select id="type" name="type" required>
+          <option value="">— Selecione o que deseja fazer —</option>
+          <option>Crítica</option>
+          <option>Sugestão</option>
+          <option>Pedido de Informação</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="message">Mensagem (crítica / sugestão) <span aria-hidden="true">*</span></label>
+        <textarea id="message" name="message" placeholder="Escreva a sua crítica ou sugestão..." required maxlength="2000"></textarea>
+        <div class="small">Máx. 2.000 caracteres. Seja claro e objetivo, inclua dias/horas e local quando aplicável.</div>
+        <div class="charcount" id="charcount">0 / 2000</div>
+      </div>
+
+      <div class="consent">
+        <input id="consent" name="consent" type="checkbox" required />
+        <label for="consent">Autorizo o tratamento dos meus dados para resposta ao pedido (ver Política de Privacidade).</label>
+      </div>
+
+      <div>
+        <label for="sendMethod">Método de envio</label>
+        <select id="sendMethod" name="sendMethod" aria-describedby="methodHelp">
+          <option value="mailto">Abrir email (mail client) — Recomendável</option>
+          <option value="emailjs">Enviar directo (EmailJS) — configurar</option>
+          <option value="formspree">Enviar via Formspree (ou similar) — configurar</option>
+        </select>
+        <div id="methodHelp" class="small">Escolhe mailto para abrir o teu cliente de email; EmailJS ou Formspree exigem registo e configuração prévia.</div>
+      </div>
+
+      <div class="controls">
+        <button type="submit" id="submitBtn">Enviar</button>
+        <button type="button" id="clearBtn" class="secondary">Limpar</button>
+        <div id="status" class="status" role="status" aria-live="polite"></div>
+      </div>
+
+      <div id="configNotes" class="small" style="margin-top:.6rem;color:var(--muted)">
+        <strong>Configuração rápida:</strong>
+        <ul>
+          <li><strong>Opção mailto:</strong> funciona sem configuração, abre o cliente de email do utilizador.</li>
+          <li><strong>Opção EmailJS:</strong> regista-te em <a href="https://www.emailjs.com/" target="_blank" rel="noopener">emailjs.com</a>, cria um serviço de email e template; depois substitui os IDs no código (USER_ID, SERVICE_ID, TEMPLATE_ID).</li>
+          <li><strong>Opção Formspree:</strong> cria um endpoint em <a href="https://formspree.io/" target="_blank" rel="noopener">formspree.io</a> e substitui FORM_ENDPOINT no código.</li>
+        </ul>
+      </div>
+    </form>
+
+    <footer>
+    <div class="footer1">
+        <h3>Siga-nos em:</h3>
+        <ul>
+            <li><a href="https://www.facebook.com/fipag/?locale=pt_BR">Facebook</a></li>
+            <li><a href="https://x.com/fipagmoz">Twitter / X</a></li>
+            <li><a href="https://www.instagram.com/fipag/">Instagram</a></li>
+        </ul>
+    </div>
+    <div class="footer-bottom">
+        © 2025 FIPAG - Fundo de Investimento e Património do Abastecimento de Água
+    </div>
+</footer>
+
+  </main>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    // ---------- Configurações ----------
+    const CONFIG = {
+      fallbackRecipient: "sugestoes@fipag.co.mz",
+      emailjs_user_id: "hV5C3OJ3aZS3SFw1t",
+      emailjs_service_id: "service_0ipbe9h",
+      emailjs_template_id: "template_5jfm7ec",
+      formspree_endpoint: "https://formspree.io/f/your-form-id"
+    };
+
+    const TEMPLATE_NAME_VARIANTS = {
+      name: ['from_name','user_name','name','full_name'],
+      email: ['from_email','user_email','reply_to','email','to_email'],
+      phone: ['phone','phone_number','telephone'],
+      topic: ['topic','assunto'],
+      type: ['type','feedback_type'],
+      message: ['message','message_html','message_plain','body','text'],
+      consent: ['consent','gdpr_consent','data_consent'],
+      to_email: ['to_email','recipient']
+    };
+
+    const form = document.getElementById('feedbackForm');
+    const statusEl = document.getElementById('status');
+    const submitBtn = document.getElementById('submitBtn');
+    const clearBtn = document.getElementById('clearBtn');
+    const charcount = document.getElementById('charcount');
+    const fields = ['name','email','phone','topic','type','message','consent'];
+
+    function setStatus(text, cls){
+      statusEl.textContent = text;
+      statusEl.className = 'status ' + (cls || '');
+    }
+
+    function validateForm(data){
+      return data.get('name') && data.get('email') && data.get('topic') && data.get('type') && data.get('message') && data.get('consent');
+    }
+
+    function sendViaMailto(data){
+      const to = CONFIG.fallbackRecipient;
+      const subject = encodeURIComponent(`[Feedback FIPAG] ${data.get('type')} — ${data.get('topic')}`);
+      const body = encodeURIComponent(
+        `Nome: ${data.get('name')}\nEmail: ${data.get('email')}\nTelefone: ${data.get('phone') || '-'}\nAssunto: ${data.get('topic')}\nTipo: ${data.get('type')}\n\n${data.get('message')}\n\nAutorização de dados: ${data.get('consent') ? 'Sim':'Não'}`
+      );
+      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+    }
+
+    async function sendViaFormspree(data){
+      const endpoint = CONFIG.formspree_endpoint;
+      if(!endpoint || endpoint.includes('your-form-id')) throw new Error('Endpoint Formspree não configurado.');
+      const payload = Object.fromEntries(data.entries());
+      const res = await fetch(endpoint, {
+        method:'POST',
+        headers:{ 'Content-Type':'application/json','Accept':'application/json'},
+        body: JSON.stringify(payload)
+      });
+      if(!res.ok) throw new Error('Erro ao enviar via Formspree: '+res.status);
+      return res.json();
+    }
+
+    function ensureManyHiddenFields(){
+      Object.values(TEMPLATE_NAME_VARIANTS).flat().forEach(v => {
+        if(!form.querySelector(`input[name="${v}"]`)){
+          const hid = document.createElement('input');
+          hid.type='hidden';
+          hid.name=v;
+          hid.id='hidden_'+v;
+          form.appendChild(hid);
+        }
+      });
+    }
+
+    function populateManyHiddenFields(){
+      const get = id => {
+        const el = document.getElementById(id);
+        return el ? (el.type==='checkbox'? (el.checked?'Sim':'Não') : el.value) : '';
+      };
+      const mapSource = {
+        name:get('name'),
+        email:get('email'),
+        phone:get('phone'),
+        topic:get('topic'),
+        type:get('type'),
+        message:get('message'),
+        consent:get('consent')==='Sim'?'Sim':'Não',
+        to_email:CONFIG.fallbackRecipient
+      };
+      Object.entries(TEMPLATE_NAME_VARIANTS).forEach(([key,variants])=>{
+        variants.forEach(v=>{
+          const el = form.querySelector(`input[name="${v}"]`);
+          if(el) el.value = mapSource[key] || '';
+        });
+      });
+    }
+
+    function buildTemplateParamsWithVariants(formData){
+      const templateParams={};
+      Object.entries(TEMPLATE_NAME_VARIANTS).forEach(([key,vars])=>{
+        vars.forEach(v=>{ templateParams[v]=formData.get(key) || (key==='consent'? (formData.get(key)?'Sim':'Não') : '') });
+      });
+      templateParams['subject'] = `[Feedback FIPAG] ${formData.get('type')} — ${formData.get('topic')}`;
+      return templateParams;
+    }
+
+    async function sendViaEmailJS(formData){
+      const { emailjs_user_id, emailjs_service_id, emailjs_template_id } = CONFIG;
+      if(!emailjs_user_id || !emailjs_service_id || !emailjs_template_id) throw new Error('EmailJS não configurado.');
+      if(typeof emailjs==='undefined') throw new Error('EmailJS SDK não carregado.');
+      return emailjs.send(emailjs_service_id, emailjs_template_id, buildTemplateParamsWithVariants(formData));
+    }
+
+    async function sendViaEmailJSSendForm(){
+      ensureManyHiddenFields();
+      populateManyHiddenFields();
+      return emailjs.sendForm(CONFIG.emailjs_service_id, CONFIG.emailjs_template_id, '#feedbackForm');
+    }
+
+    clearBtn.addEventListener('click', ()=>{
+      form.reset();
+      fields.forEach(f=>localStorage.removeItem(f));
+      charcount.textContent='0 / 2000';
+      setStatus('','');
+      Object.values(TEMPLATE_NAME_VARIANTS).flat().forEach(v=>{
+        const hid = document.getElementById('hidden_'+v); if(hid) hid.value='';
+      });
+    });
+
+    fields.forEach(f=>{
+      const el=document.getElementById(f);
+      if(!el) return;
+      el.addEventListener('input',()=>{
+        localStorage.setItem(f, el.type==='checkbox'?el.checked:el.value);
+        if(f==='message') charcount.textContent=`${el.value.length} / 2000`;
+      });
+    });
+
+    window.addEventListener('load', ()=>{
+      fields.forEach(f=>{
+        const el=document.getElementById(f);
+        if(!el) return;
+        const saved = localStorage.getItem(f);
+        if(saved) el.type==='checkbox'? el.checked=saved==='true' : el.value=saved;
+      });
+      const msg = document.getElementById('message');
+      if(msg) charcount.textContent=`${msg.value.length} / 2000`;
+      if(typeof emailjs!=='undefined') emailjs.init(CONFIG.emailjs_user_id);
+    });
+
+    form.addEventListener('submit', async ev=>{
+      ev.preventDefault();
+      setStatus('A processar...','');
+      submitBtn.disabled=true;
+      try{
+        const formData = new FormData(form);
+        if(!validateForm(formData)){
+          setStatus('Preencha todos os campos obrigatórios e aceite o tratamento de dados.','error');
+          submitBtn.disabled=false;
+          return;
+        }
+        const method=formData.get('sendMethod')||'mailto';
+        if(method==='mailto'){
+          sendViaMailto(formData);
+          setStatus('A abrir o seu cliente de email...','');
+        } else if(method==='formspree'){
+          await sendViaFormspree(formData);
+          setStatus('Mensagem enviada com sucesso via Formspree. Obrigado!','success');
+          form.reset();
+          fields.forEach(f=>localStorage.removeItem(f));
+        } else if(method==='emailjs'){
+          try{
+            setStatus('A enviar via EmailJS (sendForm)...','');
+            await sendViaEmailJSSendForm();
+            setStatus('Mensagem enviada com sucesso via EmailJS. Obrigado!','success');
+            form.reset();
+            fields.forEach(f=>localStorage.removeItem(f));
+          }catch(err){
+            console.warn('sendForm falhou, tentando send() fallback',err);
+            try{
+              setStatus('A enviar via EmailJS (send)...','');
+              await sendViaEmailJS(formData);
+              setStatus('Mensagem enviada com sucesso via EmailJS. Obrigado!','success');
+              form.reset();
+              fields.forEach(f=>localStorage.removeItem(f));
+            }catch(e){
+              console.error(e);
+              let msg='Erro no envio via EmailJS.';
+              if(e && e.status) msg+=` Status: ${e.status}.`;
+              if(e && e.text) msg+=` Texto: ${e.text}.`;
+              if(e && e.message) msg+=` Mensagem: ${e.message}.`;
+              setStatus(msg,'error');
+            }
+          }
+        } else{
+          throw new Error('Método de envio desconhecido.');
+        }
+      }catch(err){
+        setStatus('Erro ao enviar: '+(err.message||err),'error');
+      }finally{
+        submitBtn.disabled=false;
+      }
+    });
+  </script>
+</body>
+</html>

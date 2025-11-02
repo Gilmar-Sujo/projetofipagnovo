@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacte & Fale Connosco — FIPAG</title>
+  <style>
+    :root {
+      --accent: #0077b6;
+      --bg: #f7f9fb;
+      --text: #333;
+      --muted: #555;
+      --maxw: 1000px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    header {
+     background: #0077b6;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 26px;
+      font-weight: bold;
+      display: flex;
+    }
+    
+    header h1 { font-size: 1.8rem; }
+    nav a { color: #fff;
+         margin-left: 500px;
+         text-decoration: none;
+          font-weight: bold; 
+          list-style-type: none;
+       
+    }
+    nav a:hover { 
+    color: red;}
+    main { max-width: var(--maxw); margin: 2rem auto; padding: 0 1rem; }
+    section.contact-info, section.contact-form {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      margin-bottom: 2rem;
+    }
+    section.contact-info h2, section.contact-form h2 { color: var(--accent); margin-bottom: 1rem; }
+    section.contact-info p, section.contact-info ul { margin-bottom: 0.5rem; }
+    section.contact-info a { color: var(--accent); text-decoration: none; }
+    section.contact-info a:hover { text-decoration: underline; }
+    form { display: grid; gap: 1rem; }
+    input, textarea, select, button { width: 100%; padding: 0.7rem; border-radius: 6px; border: 1px solid #ccc; font-size: 1rem; }
+    textarea { resize: vertical; min-height: 150px; }
+    button { background: var(--accent); color: #fff; border: none; cursor: pointer; transition: background 0.3s; }
+    button:hover { background: #005f87; }
+    .secondary { background: #555; }
+    footer { text-align: center; padding: 1rem; margin-top: 2rem; color: var(--muted); font-size: 0.9rem; }
+    @media(max-width: 700px){
+      header { flex-direction: column; align-items: flex-start; }
+      nav { margin-top: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="#">Contacte & Fale Connosco</a>
+      
+    </nav>
+  </header>
+
+  <main>
+    <section class="contact-info">
+      <h2>Informações de Contacto</h2>
+      <p><strong>Endereço:</strong> Av. Filipe Samuel Magaia, Nº 1291 R/C, Maputo - Moçambique</p>
+      <p><strong>P.O Box:</strong> 91</p>
+      <p><strong>Telefones:</strong></p>
+      <ul>
+        <li>(258) 21 308840</li>
+        <li>(258) 21 308815</li>
+        <li>(258) 21 315529</li>
+        <li>Cel: (258) 82 3025430 / 82 3025910</li>
+        <li>Fax: (258) 21 308881</li>
+      </ul>
+      <p><strong>Email:</strong> <a href="mailto:fipag@fipag.co.mz">fipag@fipag.co.mz</a></p>
+    </section>
+
+    <section class="contact-form">
+      <h2>Envie a Sua Mensagem</h2>
+      <form id="contactForm">
+        <input type="text" id="name" name="name" placeholder="Nome completo" required />
+        <input type="email" id="email" name="email" placeholder="Email" required />
+        <input type="text" id="phone" name="phone" placeholder="Telefone (opcional)" />
+        <textarea id="message" name="message" placeholder="Escreva a sua mensagem..." required></textarea>
+        <div style="display:flex;gap:10px;">
+          <button type="submit">Enviar</button>
+          <button type="button" class="secondary" id="clearBtn">Limpar</button>
+        </div>
+      </form>
+      <div id="status" style="margin-top:10px;"></div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 FIPAG — Todos os direitos reservados.
+  </footer>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('status');
+    const clearBtn = document.getElementById('clearBtn');
+
+    // Carrega dados do localStorage ao iniciar a página
+    window.addEventListener('DOMContentLoaded', () => {
+      if(localStorage.getItem('contactForm')){
+        const data = JSON.parse(localStorage.getItem('contactForm'));
+        form.name.value = data.name || '';
+        form.email.value = data.email || '';
+        form.phone.value = data.phone || '';
+        form.message.value = data.message || '';
+      }
+    });
+
+    // Função para salvar no localStorage
+    function saveToLocalStorage(){
+      const data = {
+        name: form.name.value,
+        email: form.email.value,
+        phone: form.phone.value,
+        message: form.message.value
+      };
+      localStorage.setItem('contactForm', JSON.stringify(data));
+    }
+
+    // Atualiza localStorage ao digitar
+    form.addEventListener('input', saveToLocalStorage);
+
+    // Limpar dados
+    clearBtn.addEventListener('click', () => {
+      form.reset();
+      localStorage.removeItem('contactForm');
+      status.textContent = '';
+    });
+
+    // Envio via mailto
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = form.name.value;
+      const email = form.email.value;
+      const phone = form.phone.value || '-';
+      const message = form.message.value;
+
+      const mailtoLink = `mailto:fipag@fipag.co.mz?subject=${encodeURIComponent('Contacto FIPAG: ' + name)}&body=${encodeURIComponent(
+        `Nome: ${name}\nEmail: ${email}\nTelefone: ${phone}\nMensagem: ${message}`
+      )}`;
+      window.location.href = mailtoLink;
+      status.textContent = 'Abrindo o seu cliente de email...';
+      status.style.color = 'green';
+    });
+  </script>
+
+</body>
+</html>

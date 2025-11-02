@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Área do Cliente</title>
+
+  <!-- ==================== CSS ==================== -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f7;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #0077b6;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    section {
+      width: 90%;
+      max-width: 1100px;
+      margin: 30px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #0077b6;
+      border-left: 5px solid #0077b6;
+      padding-left: 10px;
+    }
+
+    /* BLOCO - ESTRUTURA ORGÂNICA */
+    .orga-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .orga-item {
+      flex: 1 1 300px;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+
+    .orga-item span {
+      display: inline-block;
+      width: 60px;
+      height: 60px;
+      background: #5685b3;
+      color: white;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 60px;
+      font-weight: bold;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    /* UNIDADES ORGÂNICAS */
+    .accordion {
+      background: #0077b6;
+      color: white;
+      cursor: pointer;
+      padding: 15px;
+      margin-top: 10px;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 16px;
+      transition: background 0.3s;
+      border-radius: 5px;
+      width: 100%;
+    }
+
+    .accordion:hover {
+      background: #005f87;
+    }
+
+    .panel {
+      padding: 0 15px;
+      background-color: #f7f7f7;
+      display: none;
+      overflow: hidden;
+      border-left: 3px solid #0077b6;
+      margin-bottom: 10px;
+      border-radius: 0 0 5px 5px;
+    }
+
+    /* ORGANOGRAMA */
+    .organograma {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .organograma img {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+
+    footer {
+      text-align: center;
+      background: #0077b6;
+      color: white;
+      padding: 15px 0;
+      margin-top: 40px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== HTML ==================== -->
+
+  <header>Área do Cliente – FIPAG</header>
+
+  <section id="estrutura">
+    <h2>💧 Serviços Fornecidos ao Cliente</h2>
+    <div class="orga-container">
+
+      <div class="orga-item">
+        <span>1</span>
+        <h3>Fornecimento de Água Potável de Qualidade</h3>
+        <p>
+          O FIPAG assegura o fornecimento contínuo e fiável de água potável, proveniente de fontes tratadas e submetidas
+           a rigorosos controlos de qualidade. O processo inclui captação, tratamento, armazenamento e distribuição,
+            garantindo que a água fornecida cumpre os padrões exigidos pelas autoridades sanitárias nacionais e internacionais. 
+            O objetivo principal
+           é garantir o acesso à água segura, essencial para a saúde pública e o bem-estar da população.
+        </p>
+      </div>
+
+      <div class="orga-item">
+        <span>2</span>
+        <h3>Gestão, Expansão e Manutenção das Redes de Distribuição</h3>
+        <p>
+          Para assegurar um serviço eficiente e sustentável, o FIPAG realiza atividades regulares de 
+          manutenção preventiva e corretiva das infraestruturas hidráulicas. Isto inclui a inspeção de tubagens,
+           substituição de condutas obsoletas, monitorização de fugas e otimização da rede de distribuição. 
+           Além disso, o Fundo promove a expansão das redes para novas zonas urbanas e periurbanas, contribuindo 
+           para a redução das desigualdades no acesso à água.
+        </p>
+      </div>
+
+      <div class="orga-item">
+        <span>3</span>
+        <h3>Atendimento, Assistência Técnica e Apoio ao Cliente</h3>
+        <p>
+        O FIPAG dispõe de canais de atendimento presencial, telefónico e digital, onde o cliente pode solicitar
+         novos contratos de ligação, atualizar dados, obter segunda via de faturas, apresentar reclamações 
+         ou pedir assistência técnica. Este serviço é complementado por equipas de intervenção rápida,
+          disponíveis para resolver avarias, ligações clandestinas ou interrupções imprevistas no abastecimento.
+        </p>
+      </div>
+
+    </div>
+    
+  </section>
+  <section id="estrutura">
+    <h2>⚖️ Direitos do Cliente</h2>
+    <div class="orga-container">
+
+      <div class="orga-item">
+        <span>1</span>
+        <h3>Direito ao Acesso Universal e Contínuo à Água Potável</h3>
+        <p>
+         O cliente tem o direito de receber água em quantidade e qualidade adequadas, de forma contínua e segura. 
+         O FIPAG compromete-se a garantir que a interrupção do fornecimento apenas ocorra em situações inevitáveis,
+          devidamente comunicadas com antecedência.
+        </p>
+      </div>
+
+      <div class="orga-item">
+        <span>2</span>
+        <h3>Direito à Informação Clara e Transparente</h3>
+        <p>
+          O cliente tem o direito de ser informado, de forma atempada e compreensível, sobre todas as questões relacionadas
+           com o serviço prestado: interrupções programadas, revisões tarifárias, alterações contratuais, qualidade da
+            água e medidas de poupança. O FIPAG valoriza a comunicação transparente como base para uma relação de confiança
+             com os consumidores.
+        </p>
+      </div>
+
+      <div class="orga-item">
+        <span>3</span>
+        <h3>Direito à Reclamação e à Resolução de Conflitos</h3>
+        <p>
+       O cliente pode apresentar reclamações sobre falhas no serviço, erros de faturação ou danos causados por intervenções
+        técnicas. O FIPAG compromete-se a analisar cada caso de forma imparcial e a emitir uma resposta fundamentada dentro
+         dos prazos legais. Caso o cliente não concorde com a decisão, pode recorrer às
+        entidades reguladoras competentes.
+        </p>
+      </div>
+
+    </div>
+    
+  </section>
+  <section id="estrutura">
+    <h2>🧾 Deveres do Cliente</h2>
+    <div class="orga-container">
+
+      <div class="orga-item">
+        <span>1</span>
+        <h3>Pagamento Pontual dos Serviços Consumidos</h3>
+        <p>
+        O cliente é responsável por efetuar o pagamento das faturas dentro do prazo estipulado.
+         O não cumprimento destas obrigações pode implicar penalizações, suspensão temporária do serviço ou
+          cobrança de juros de mora. O cumprimento regular das obrigações financeiras contribui para 
+        a sustentabilidade económica do sistema de abastecimento de água.
+        </p>
+      </div>
+
+      <div class="orga-item">
+        <span>2</span>
+        <h3>Utilização Responsável e Segura da Água</h3>
+        <p>
+          O cliente deve utilizar a água de forma racional, evitando o desperdício e promovendo o consumo consciente. 
+          É também seu dever zelar pela integridade das instalações internas, impedindo ligações ilegais ou manipulação 
+          dos contadores de medição.
+           Estas práticas asseguram uma distribuição justa e eficiente dos recursos hídricos.
+        </p>
+      </div>
+
+      <div class="orga-item">
+        <span>3</span>
+        <h3>Colaboração com o FIPAG nas Ações de Fiscalização e Manutenção</h3>
+        <p>
+       O cliente deve permitir o acesso dos técnicos do FIPAG às instalações sempre que necessário para leitura 
+       de contadores, inspeções ou reparações. Além disso, deve comunicar prontamente qualquer anomalia, fuga 
+       ou alteração detetada, colaborando para 
+       a rápida resolução de problemas e melhoria contínua do serviço.
+        </p>
+      </div>
+
+    </div>
+    
+  </section>
+  
+
+  <footer>
+    © 2025 FIPAG - Fundo de Investimento e Património do Abastecimento de Água
+  </footer>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    // Código para abrir e fechar as secções do acordeão
+    const accordions = document.querySelectorAll(".accordion");
+
+    accordions.forEach(acc => {
+      acc.addEventListener("click", function() {
+        this.classList.toggle("active");
+        const panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

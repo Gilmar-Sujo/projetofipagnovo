@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Áreas de Actuação</title>
+
+  <!-- ==================== CSS ==================== -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f7;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #0077b6;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    section {
+      width: 90%;
+      max-width: 1100px;
+      margin: 30px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #0077b6;
+      border-left: 5px solid #0077b6;
+      padding-left: 10px;
+    }
+
+    /* BLOCO - ESTRUTURA ORGÂNICA */
+    .orga-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .orga-item {
+      flex: 1 1 300px;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+
+    .orga-item span {
+      display: inline-block;
+      width: 60px;
+      height: 60px;
+      background: #5685b3;
+      color: white;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 60px;
+      font-weight: bold;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    /* UNIDADES ORGÂNICAS */
+    .accordion {
+      background: #0077b6;
+      color: white;
+      cursor: pointer;
+      padding: 15px;
+      margin-top: 10px;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 16px;
+      transition: background 0.3s;
+      border-radius: 5px;
+      width: 100%;
+    }
+
+    .accordion:hover {
+      background: #005f87;
+    }
+
+    .panel {
+      padding: 0 15px;
+      background-color: #f7f7f7;
+      display: none;
+      overflow: hidden;
+      border-left: 3px solid #0077b6;
+      margin-bottom: 10px;
+      border-radius: 0 0 5px 5px;
+     
+    }
+
+    /* ORGANOGRAMA */
+    .organograma {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .organograma img {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+
+    footer {
+      text-align: center;
+      background: #0077b6;
+      color: white;
+      padding: 15px 0;
+      margin-top: 40px;
+      font-size: 14px;
+    }
+    .panel li{
+    margin-left: 50px;
+
+    
+}
+
+.panel h1{
+      font-size: 16px;
+      text-shadow: 1px 1px 2px black;
+    }
+  
+  </style>
+</head>
+<body>
+
+  <!-- ==================== HTML ==================== -->
+
+  <header>Áreas de Actuação do FIPAG</header>
+
+  <section id="estrutura">
+    <h2>Áreas de Actuação Por Região</h2>
+    <div class="orga-container">
+
+      <div class="orga-item">
+        <span>1</span>
+        <h3>Região Norte</h3>
+        <p>
+         A Região Norte cobre cidades como Nampula, Pemba (Cabo Delgado) e outras localidades importantes nas províncias de Nampula, Cabo Delgado, Niassa e parte de Zambézia. Esta região apresenta um crescimento urbano rápido, impulsionado por investimentos em infraestrutura e urbanização. Os desafios incluem a expansão da rede de abastecimento em áreas periféricas, gestão de qualidade da água e cobertura eficiente em zonas rurais próximas às cidades. O FIPAG na Região Norte concentra-se na implementação de projetos de extensão de redes, modernização de sistemas antigos e reforço da resiliência das infraestruturas face a condições climáticas adversas.
+        </p>
+      </div>
+
+      <div class="orga-item">
+        <span>2</span>
+        <h3>Região Centro</h3>
+        <p>
+         A Região Centro abrange cidades como Beira (capital da província de Sofala) e áreas das províncias de Sofala e Manica. Esta região possui um clima mais tropical, com elevados índices pluviométricos, mas enfrenta desafios relacionados com inundações, corrosão das tubulações e expansão urbana desordenada. O FIPAG atua na manutenção das estações de tratamento de água, expansão das redes de distribuição e melhoria do acesso a água potável em áreas urbanas e periurbanas. A região central é estratégica devido à presença do porto da Beira, sendo crucial para o desenvolvimento económico do país.
+      </div>
+
+      <div class="orga-item">
+        <span>3</span>
+        <h3>Região Sul</h3>
+        <p>
+          A Região Sul do FIPAG engloba a cidade de Maputo e a província de Maputo, incluindo municípios adjacentes como Matola, Boane e Marracuene. Esta região é caracterizada por uma elevada densidade populacional e uma urbanização intensa, o que impõe desafios significativos à gestão do abastecimento de água, tanto em termos de distribuição como de manutenção da infraestrutura. O FIPAG nesta região foca-se na garantia de fornecimento contínuo, na modernização de redes antigas e na expansão de sistemas para bairros recentemente urbanizados. A Região Sul também abriga os principais centros administrativos do FIPAG, servindo de referência para outras regiões.
+      </div>
+
+    </div>
+  </section>
+
+  <section id="unidades">
+    <h2>Áreas de Actuação do FIPAG na Região Norte</h2>
+
+    <button class="accordion">
+Nampula
+</button>
+    <div class="panel">
+      <p>
+
+<h1>Captação</h1>
+A captação de água é realizada a partir de um poço de betão construído na albufeira da Barragem de Monapo, com capacidade de armazenamento de 4,0 Mm³. A captação é efetuada através de quatro electrobombas submersíveis SP300-2, permitindo um máximo de 1.200 m³/dia.
+
+Tratamento e Adução
+O SAA dispõe de um sistema convencional de tratamento de água, que inclui pré-cloração, floculação, decantação e filtração. A capacidade nominal de tratamento é de 20.000 m³/dia.
+
+A adução de água a partir da EB1 – Estação de Bombagem localizada na ETA – é realizada através de quatro electrobombas centrífugas do tipo NK, sendo:
+
+<li>
+Duas com caudal nominal de 630 m³/h e altura manométrica de 92 m.c.a;
+</li>
+<li>
+  Duas com caudal nominal de 280 m³/h e altura manométrica de 92 m.c.a.
+</li>
+
+
+
+O transporte de água da EB1 para EB2 é feito através de duas adutoras com diâmetro de 400 mm e extensão de 7,0 km, sendo uma em PVC e outra em asbesto-cimento.
+
+A EB2 dispõe de quatro depósitos semi-enterrados, com capacidade total de armazenamento de 7.500 m³, e de uma estação de bombagem equipada com quatro electrobombas centrífugas do tipo NK, com os seguintes caudais nominais e alturas manométricas:
+
+<li>340 m³/h – 69 m.c.a</li>
+<li>700 m³/h – 90 m.c.a</li>
+<li>280 m³/h – 92 m.c.a</li>
+<li>400 m³/h – 72 m.c.a</li>
+
+
+
+
+
+
+
+Distribuição
+A distribuição de água realiza-se a partir de dois CDs – EB3 e EB4 – que recebem água da EB2. Para a EB3, a água é escoada...</p>
+    </div>
+
+    <button class="accordion">Nacala
+</button>
+    <div class="panel">
+      <p>O SAA de Nacala é constituído por três subsistemas, nomeadamente Barragem e Mutuzi, que funcionam interligados, e Mpaco, que opera de forma independente.
+
+<h1>Captação do Sistema da Barragem</h1>
+A captação do Sistema da Barragem é realizada na Barragem de Nacala, com uma capacidade atual de 4,0 milhões de m³, prevendo-se que atinja 7,5 Mm³ a partir de Junho, após a conclusão das obras de reabilitação.
+A capacidade máxima de captação é de 250 m³/h.
+
+<h1>Tratamento e Adução</h1>
+A ETA dispõe de processos convencionais de tratamento, incluindo mistura, floculação, decantação, filtração e desinfecção.
+Após o tratamento, a água é bombeada para a Estação de Bombagem R1-R2, passando previamente por um tanque de equilíbrio (R0). A partir de R1-R2, a água é novamente elevada para a Estação de Bombagem R3-R4.
+Nas estações de bombagem, procede-se à correção do cloro residual através de injeção direta de HTH.
+
+<h1>Distribuição</h1>
+
+Para além da torre de distribuição R5, que recebe água do R3-R4 por bombagem através de duas electrobombas do tipo NK, com caudal e altura nominal de 250 m³/h e 60 m.c.a, respectivamente, a distribuição de água é também feita por gravidade para as zonas baixas, como a Cidade Baixa, através das estações de bombagem R1-R2.
+A extensão total da rede de distribuição é de 106,0 km, com diâmetros variando de 400 a 60 mm, sendo maioritariamente em asbesto-cimento.</p>
+    </div>
+
+    <button class="accordion">Pemba
+</button>
+    <div class="panel">
+      <p>
+        <h1>Captação</h1>
+A abstração de água é realizada no Campo de Furos de Metuge, a partir de sete furos operacionais, equipados com electrobombas com as seguintes características de caudal (Q) e altura manométrica (H):
+<li>
+Q125 H61
+</li>
+<li>Q125 H61</li>
+<li>Q77 H49</li>
+<li>Q126 H61</li>
+<li>Q77 H61</li>
+<li>Q160 H61</li>
+<li>Q60 H111</li>
+
+
+<h1>Tratamento e Adução</h1>
+O processo de tratamento visa a remoção de ferro através de aeração e filtração. A ETA tem capacidade nominal de 12.000 m³/dia.
+
+A bombagem de água tratada é feita a partir da Estação de Elevação I (Ponto A), localizada no mesmo recinto da ETA. A partir do Ponto A, a água é transportada para o Ponto C (tanques de equilíbrio) e segue para a Estação de Bombagem Buster (Ponto D).
+
+Posteriormente, a água é bombeada para o Ponto F, passando pelo Ponto C, que funciona como torre de equilíbrio. Durante este percurso, o sistema fornece água ao sub-sistema Muhate-Mutxara. O Ponto F fornece ainda água ao sub-sistema Alto Gingone por bombagem e ao Ponto F1 por gravidade.
+
+O transporte de água entre os diferentes centros de distribuição (CDs) é realizado através de adutoras com 450 mm de diâmetro e uma extensão total de 60 km.
+
+<h1>Distribuição</h1>
+A distribuição de água é realizada maioritariamente pelo Centro Distribuidor Ponto F1. Os CDs Alto Gingone, Muchara-Mahate, Metuge, assim como algumas ligações diretas à adutora, também participam na distribuição.
+
+A extensão total da rede é de 270 km, com diâmetros variando entre 250 e 60 mm. Segundo o relatório da Sinohydro, a demanda de água é estimada em cerca de 25.019 m³/dia.</p>
+    </div>
+
+    <button class="accordion">Angoche
+</button>
+    <div class="panel">
+      <p>
+        <h1>Captação</h1>
+A captação do Sistema de Abastecimento de Água de Angoche é realizada a partir do Campo de Furos de Malatane, através de três furos equipados com electrobombas SP30-2. A exploração do campo de furos teve início em 2009, com o início da Gestão Delegada nesta área operacional.
+
+Anteriormente, a captação era feita numa lagoa localizada no mesmo campo de furos. Os furos apresentam uma profundidade máxima de 40 metros e diâmetro de revestimento de 125 mm, estando ligados a uma adutora por condutas com diâmetro DN110, permitindo uma captação máxima de 75 m³/h.
+
+<h1>Adução e Tratamento</h1>
+A Estação de Tratamento de Água (ETA) é alimentada através de uma adutora com 4,7 m de extensão e DN250 mm de diâmetro.
+
+O processo de tratamento de água consiste em desinfecção com cloro (HTH). Este processo entrou em uso quando a abstração de água deixou de ser feita na lagoa de Malatane, passando a ser realizada através dos furos. Anteriormente, o tratamento incluía a adição de sulfato de alumínio e filtração em filtros metálicos a pressão.
+
+<h1>Distribuição</h1>
+A distribuição de água é realizada a partir do Centro Distribuidor (CD) de Parapato, situado a 30 metros de altura da ETA, onde se procede à bombagem de alimentação ao CD.
+
+A elevação ao CD é feita através de duas electrobombas do tipo CR, cada uma com capacidade de elevar 64 m³/h, altura manométrica de 90 m e potência elétrica de 15 kW.
+
+A rede de distribuição tem uma extensão de 42 km, cobrindo os bairros de Inguri, Horta, Puli e Central, com diâmetros variando entre 250 e 63 mm.
+
+Segundo o Projeto de Extensão de Rede elaborado pela Sinohydro, a demanda de água é estimada em cerca de 6.642 m³/h, contra uma capacidade máxima de produção de 1.800 m³/dia. O período médio diário de distribuição é de 22 horas.</p>
+    </div>
+
+    <button class="accordion">Lichinga
+</button>
+    <div class="panel">
+      <p>
+
+<h1>Captação</h1>
+A captação de água do SAA da Cidade de Lichinga é feita na Albufeira de Locumué, através de um sifão invertido. A albufeira possui capacidade de armazenamento de 1,9 milhões de m³, com capacidade máxima de captação de 180 m³/h.
+
+<h1>Adução e Tratamento</h1>
+Da Barragem de Locumué, a água escoa por gravidade através de uma conduta de 315 mm de diâmetro e 3,0 km de extensão, até à Estação de Bombagem I.
+
+A partir deste centro, a água é elevada para a ETA por quatro electrobombas centrífugas, cada uma com 100 m³/h de caudal nominal, 22,0 m de altura manométrica e 7,5 kW de potência. O transporte é realizado através de duas condutas com 200 mm e 160 mm de diâmetro, com 700 m de extensão.
+
+O processo de tratamento atualmente em vigor consiste apenas em desinfecção com cloro (HTH).
+
+<h1>Distribuição</h1>
+O SAA de Lichinga dispõe de três Centros Distribuidores (CDs) – CD1, CD2 e CD de Namacula – que fornecem água a um universo de 5.074 ligações, com uma taxa de cobertura de 22%.
+
+A rede de distribuição tem uma extensão de 50,0 km, compreendendo diâmetros entre 60 e 160 mm, sendo maioritariamente em asbesto-cimento. Segundo o Estudo de Viabilidade elaborado pela empresa Burnsine, a demanda atual de água é de 12.300 m³/dia, contra uma capacidade de produção de 4.320 m³/h.</p>
+    </div>
+
+    <button class="accordion">Cuamba</button>
+    <div class="panel">
+      <p>
+        <h1>Captação</h1>
+A captação de água do SAA da cidade de Lichinga é feita na Albufeira de Locumué, através de um sifão invertido. A albufeira possui uma capacidade de armazenamento de 1,9 milhões de m³, com capacidade máxima de captação de 180 m³/h.
+
+<h1>
+Adução e Tratamento
+</h1>
+Da barragem de Locumué, a água escoa por gravidade através de uma conduta de 315 mm de diâmetro e 3,0 km de extensão, até à Estação de Bombagem I.
+
+A partir deste centro, a água é elevada para a ETA por quatro electrobombas centrífugas, cada uma com caudal nominal de 100 m³/h, altura manométrica de 22,0 m e potência de 7,5 kW.
+
+O transporte é feito através de duas condutas com 200 mm e 160 mm de diâmetro, com extensão total de 700 m.
+
+O processo de tratamento atualmente em vigor consiste exclusivamente em desinfecção com cloro (HTH).
+
+<h1>Distribuição</h1>
+O SAA de Lichinga dispõe de três Centros Distribuidores (CDs) – CD1, CD2 e CD de Namacula – que fornecem água a um universo de 5.074 ligações, com uma taxa de cobertura de 22%.
+
+A rede de distribuição tem extensão total de 50,0 km, com diâmetros variando entre 60 e 160 mm, sendo maioritariamente construída em asbesto-cimento.
+
+Segundo o Estudo de Viabilidade elaborado pela empresa Burnsine, a demanda atual de água é de 12.300 m³/dia, enquanto a capacidade de produção é de 4.320 m³/h.</p>
+    </div>
+    
+    <!--Região centro-->
+<section id="unidades">
+    <h2>Áreas de Actuação do FIPAG na Região Centro</h2>
+
+    <button class="accordion">
+Beira e Dondo
+
+</button>
+    <div class="panel">
+      <p>
+        <h1>Captação</h1>
+A Área Operacional da Beira, situada na província de Sofala, é a maior área operacional da Região Centro, possuindo o maior número de clientes e o maior sistema de abastecimento de água que alimenta as populações dos municípios da Beira e de Dondo, incluindo a sede do Posto Administrativo de Mafambisse. O sistema de abastecimento de água tem como capacidades nominais de captação, produção e armazenamento de 60.000 m3/d, 50.000 m3/d e 36.590 m3, respectivamente.
+<h1>Descrição do Sistema</h1>
+
+A captação de água para a Estação de Tratamento da Mutua é feita num canal que serve de reservatório de água bruta. A água bruta é proveniente do Rio Pungué e pode ser transferida para esse canal vinda de duas captações distintas, uma antiga que pertence à Empresa Açucareira de Mafambisse e outra situada no Dingue-Dingue recentemente construída pelo FIPAG. A Captação no Dingue-Dingue é constituída por 3+1 grupos de bombagem submersíveis com uma capacidade nominal de 1.350 m3/h e uma altura manométrica de 17,2 m.
+
+O SAA da AO-Beira dispõe de cerca de 942 km de rede de distribuição, incluindo tubagem primária, secundária e terciária. Parte desta rede é obsoleta, em asbesto-cimento (AC), com mais de 50 anos de idade, estando vulneráveis à ropturas. Para além do AC, também existem tubagens em ferro galvanizado, copolene e PVC, com os diâmetros a variarem de DN600 à DN50 (ver mapa abaixo nas plantas ilustrativas do SAA).
+</p>
+    </div>
+
+    <button class="accordion">Chimoio, Manica e Gondola
+
+</button>
+    <div class="panel">
+      <p>O objectivo do sistema de abastecimento de água de Manica é o de prover às populações das cidades de Manica, Chimoio e Gondola e vilas de Messica e Bandula de água potável. O sistema de abastecimento de água tem como capacidades de captação, produção e armazenamento 40.920 m3/d, 38.600 m3/d e 18.960 m3, respectivamente. 
+<h1>Captação </h1>
+
+A fonte de água bruta é a albufeira de Chicamba, localizada a aproximadamente 36 km a sudeste da Cidade de Manica. Concebido com uma capacidade instalada de 40.920 m3/d, a água é captada através duma torre de captação implantada na albufeira de Chicamba. A torre de captação dispõe de duas entradas de níveis diferentes, uma superior a cota 614.4 metros e outra inferior a cota 609.1 metros de modo a permitir uma melhor qualidade de água a superfície de acordo com os ciclos sazonais do nível de água na albufeira.</p>
+    </div>
+
+    <button class="accordion">Tete e Moatize
+
+</button>
+    <div class="panel">
+      <p>
+       O sistema de abastecimento de água da AO-Tete é o garante do fornecimento de água à cidade de Tete. Este tem como fonte a água subterrânea captada na bacia do Rio Zambeze, com uma capacidade instalada de captação de 39.280 m3/d, produção de 38.495 m3/d, capacidade de armazenamento de 5,390 m3 e extensão total de adutoras de 89 km.
+
+ 
+<h1>Sistemas de Abastecimento de Água</h1>
+O sistema de abastecimento de água é composto por dois grandes subsistemas, Tete - Antiga e Matundo/ Chingodzi e três pequenos sistemas, designadamente Canongola, Mpadué (desactivado devido ao alto teor de salinidade na água) e Degué.
+
+<h1>Tete – Antiga</h1>
+Nas captações do Vale de Nhartanda (escoamento subterrâneo do rio Zambeze) a água é captada a partir dos 12 furos existentes, equipados com bombas submersíveis, do tipo SP (ver abaixo mapa ilustrativo do campo de furos). A soma do caudal nominal dos 12 furos operacionais é de 895 m3/h, que é aduzido em conjunto numa adutora DN de 400 mm, em asbestos-cimento (AC), com um comprimento de 980 metros para a estação de tratamento de água. A ETA tem uma capacidade nominal de 15.000 m3/d, capacidade esta que se considera limitada para cobrir a expansão do captação.</p>
+    </div>
+
+    <button class="accordion">Quelimane
+</button>
+    <div class="panel">
+      <p>
+       A Área Operacional de Quelimane, localizada na província da Zambézia, possui como fonte de captação de água subterrânea e abastece as populações da Cidade de Quelimane, a vila sede do Distrito de Nicoadala e parte do posto administrativo de Licuar.
+<h1>Descrição do Sistema</h1>
+
+A água do Sistema de Abastecimento da Cidade de Quelimane é de origem subterrânea sendo captada em dois campos de furos, nomeadamente Licuar e Nicoadala, com uma capacidade total de captação de 20.016 m3/d e produção de 19.512 m3/d.
+
+<h1>Captação e ETA de Licuar</h1>
+
+A Captação de Licuar é bastante antiga e é constituída por 8 furos artesianos, dos quais 3 foram abertos no ano 2015, com uma capacidade instalada de captação de 13.824 m3/d. A água do campo de furos de Licuar contém um teor de ferro elevado, o que levou a construção de uma ETA no local, constituída por um sistema de aeração e 5 células de filtros lentos e uma capacidade de tratamento de 10.800 m3/d.
+
+Assim, a água captada dos furos é transportada para a ETA, onde descai na cascata, recebendo oxigénio do ar que oxida o ferro e fica retido nas areias dos filtros. A água tratada entra para um reservatório semienterrado de 250m3 de capacidade, de onde é bombeada para um depósito elevado de 500m3 com cerca de 32 m de altura, sendo desinfectada com HTH antes de por gravidade seguir para o CD de Quelimane. Devido a limitada capacidade de tratamento na ETA, a água captada em parte dos furos (os furos com melhor qualidade de água bruta) é transportada directamente para a cisterna, de onde é desinfectada com HTH.   </div>
+
+    
+    <section id="unidades">
+    <h2>Áreas de Actuação do FIPAG na Região Sul</h2>
+
+    <button class="accordion">
+Maputo, Matola e Boane
+
+</button>
+    <div class="panel">
+      <p>
+
+A área de concessão tem cerca de 2.120.000 habitantes e estima-se que 65% destes beneficiam do fornecimento de água potável (Maputo, Matola e Boane). A restante parte da população depende de origens de água subterrânea, designados Pequenos Sistemas. Há ainda casos em que a população obtém água de vendedores privados ou de simples furos.
+
+<h1>Clientes</h1>
+Em termos de clientes, a AdeM possui cerca de 239.818, entre consumidores domésticos e industriais. De acordo com o Relatório Mensal de dezembro de 2014, o número de clientes da AdeM tinha atingido os 239.818, o que representa um aumento de 911 clientes (0,4%) relativamente ao mês anterior. Simultaneamente, observou-se uma redução do número de clientes suspensos (0,3%) também em relação ao mês de novembro.
+
+<h1>O Sistema de Abastecimento</h1>
+O sistema de abastecimento de água às cidades de Maputo, Matola e ao município de Boane compreende:
+
+<li>O Sistema de Umbeluzi, constituído pela captação, estação de tratamento de água (ETA), condutas adutoras, estações elevatórias, Centros Distribuidores (Boane, Belo Horizonte, Matola Rio, Matola, Machava, Tsalala, Chamanculo, Alto Maé, Maxaquene e Laulane) e respetivas redes de distribuição;
+</li>
+<li>O Sistema Autónomo de Ka Tembe;
+</li>
+<li>O Sistema Autónomo da Vila Olímpica;
+</li>
+<li>Os Pequenos Sistemas (Zona Verde, Kongolote, Matola Gare na Matola, Magoanine e Albazine em Maputo).
+</li>
+
+
+Os Sistemas Autónomos são constituídos por furos, pequenos reservatórios e redes de distribuição. A água, após ser captada, é tratada (caso específico da Ka Tembe) junto ao furo e armazenada em pequenos reservatórios que alimentam uma rede de distribuição de reduzida extensão. Como este tipo de solução recorre a origens subterrâneas, os Sistemas Autónomos localizam-se preferencialmente nos locais de difícil acesso para fornecimento a partir do Sistema de Umbeluzi (como é o caso de Ka Tembe e Vila Olímpica) e nas zonas sem rede de distribuição e com abundância em recursos subterrâneos (zona Norte da cidade de Maputo).
+
+O Sistema Autónomo de Ka Tembe tem uma produção de 760 m³/dia, enquanto os Pequenos Sistemas da Zona Verde, Kongolote, Matola Gare, Albazine e Magoanine possuem uma produção total que se estima em cerca de 6.500 m³/dia.
+
+No que se refere ao Sistema de Umbeluzi, a água é captada a jusante da barragem dos Pequenos Libombos, com uma capacidade de produção máxima de 240.000 m³/dia, sendo posteriormente tratada na ETA de Umbeluzi.</p>
+    </div>
+
+    <button class="accordion">Xai-xai
+
+</button>
+    <div class="panel">
+      <p>
+        <h1>Aspectos Gerais do Sistema</h1>
+O sistema de Abastecimento de Água da Área Operacional de Xai-Xai (AOX) localiza-se na cidade de Xai-Xai e nos distritos de Limpopo e Chongoene. É constituído por 09 subsistemas, nomeadamente: Bairro 11, Bairro 13, Hospital, Patrice Lumumba, Inhamissa 6, CFPP, Marieny Gouaby, Chinuguine, Praia e 04 Pequenos Sistemas: Chicumbane, Julius Nyerere, Muahetane e Chongoene cuja fonte de captação de água é subterrânea. O sistema da AOX dispõe de um total de cerca de 498km rede de distribuição e 52km de condutas adutoras.
+
+No geral a capacidade instalada de produção situa-se na ordem de 43.670m3/dia, com uma potência instalada de 766.35Kw/h e a média praticada na ordem de 22.790m3/dia. As perdas de água estão numa média de 52% tornando se um desafio a sua redução a nível da AO para cerca de 40%.
+
+A taxa de cobertura está na ordem de 62%, resultante de 26.342 clientes domésticos e 23 fontanários. A população da área de cobertura do sistema é estimada em cerca de 235.092 habitantes, sendo cerca de 139.613 população servida por ligações domésticas e 6.900 habitantes, servida por fontanários.</p>
+    </div>
+
+    <button class="accordion">Chókwè</button>
+
+    <div class="panel">
+      <p>
+        <h1>Aspectos Gerais do Sistema</h1> 
+O sistema de abastecimento de água da Área Operacional de Chókwè (AOC) localiza-se no município e distrito do mesmo nome e também no distrito de Guija. É constituído por 10 subsistemas que abastecem o município de Chókwè e áreas adjacentes, nomeadamente, Lionde, Conhane, Massavassa, Nwachicoluane, Xilembene, Hókwe, Mapapa e vila-sede do distrito de Guijá. A principal fonte de captação de água é subterrânea com excepção de Hokwe e Xilembente cuja captação é feita superficialmente através do rio Limpopo. O sistema tem uma capacidade de reserva de 2.130m3, com uma capacidade instalada de 703m3/h e 19. 284 Clientes. A taxa de cobertura da rede existente é de 81% correspondente a uma população servida estimada em cerca de 110.002 habitantes.
+
+<h1>Captação</h1>
+A fonte de captação do sistema de Chókwè é o aquífero de águas subterrâneas, com a excepção de Xilembene e Hókwè que tem como principal fonte o rio Limpopo, cujos volumes são abaixo descritas:
+
+Sistema da cidade de Chókwè com uma capacidade de produção de 10.056 m3/dia;
+Sistemas autónomos (PSAAs) de Lionde, Massavasse, Conhane, Nwachicoluane Mapapa, Hokwe, Xilembene e Guja com capacidade de produção de 6.816 m3/dia.
+O Sistema da Cidade baseia-se numa captação subterrânea feita através de 06 furos e igualmente para os sistemas autónomos cuja captação é também subterrânea através de 07 furos exceptuando Hokwe e Xilemebene cuja captação é superficial, no rio Limpopo para contornar problemas de intrusão salina nas fontes subterrâneas a uma distância de 350 metros. Com desvio de parâmetros de qualidade de água por elevados cloretos e condutividade, a água é salobre em Nwaxicoluane, Mapapa, conhane e Massavasse.
+</p>   
+</div>
+
+    <button class="accordion">Inhambane</button>
+    <div class="panel">
+      <p>
+      <h1>Aspectos Gerais do Sistema</h1>  
+O sistema de Abastecimento de Água da Área Operacional de Inhambane (AOI) localiza-se na cidade de Inhambane, município do mesmo nome. Integra 4 sistemas, nomeadamente: Os sistemas da Cidade, Salela, Nhamua e Josina Machel, dispondo de um total de cerca de 148.081km de tubagem de rede de distribuição e 15.352km de tubagem de adutoras.
+
+A principal fonte de captação de água é superficial para o sistema de Guiúa e subterrânea para os Sistemas de Salela, Nhamua e Josina Machel. No geral a capacidade de captação situa-se na ordem de 14.436 m3/dia e a média praticada na ordem de 10.916 m3/dia. A capacidade de produção instalada é de 30536 m3/dia, e actualmente a praticada está na ordem 11176 m3/dia.
+
+As perdas de água na AOI estão na ordem de 49% tornando-se um desafio a sua redução para o nível de cerca de 30%.
+
+A taxa de cobertura na AOI está na ordem de 82% correspondentes a 17116 ligações (63868 população servida) de um total de 74599 residente na área de cessão.</p>
+    </div>
+
+    <button class="accordion">Maxixe</button>
+    <div class="panel">
+      <p>
+<h1>Aspectos gerais do Sistema</h1>
+
+O Sistema de abastecimento de Agua da Área Operacional de Maxixe (AOM) localiza-se no Município de Maxixe. Integra o sistema principal da cidade e os sistemas autónomos (PSAAs) de Mangapana e Mabil, dispondo de um total de cerca de 350 km de tubagem de rede de distribuição e 20 km de tubagem de adutoras totalizando 370km.
+
+A principal fonte de captação de água para o sistema principal é superficial do rio Inhanombe, localizada no bairro Habana a 12km da cidade de Maxixe e subterrâneas para os sistemas Mangapana, Mabil, Chambone e Habana. O ponto de captação superficial foi construído no ano de 2006 a 2008 com uma capacidade de captação de água bruta de 300 m3/h. A captação subterrânea é feita através de um total de 13 furos estando 7 (sete) em Habana, 2 (dois) em Chambone, 2 (dois) em Macuamene e 2 (dois) em Mabil. No geral a capacidade de captação situa – se na ordem de 10.824 m3/dia e a média praticada na ordem de 9.120 m3/dia.
+
+O sistema abastece através de uma rede de distribuição de 350 km, 13703 ligações domiciliárias e 26 fontanários públicos, durante uma media de 16 horas por dia, a cerca de 76.820 habitantes que corresponde a 66% de uma população total de 117.700 habitantes distribuídos por 15 bairros, nomeadamente: Chambone, Rumbana, Nhambiho, Bato, Habana, Malalane, Macupula, Macuamene, Maquetela, Eduardo Mandlane (Expansão), Nhamaxaxa, Matadouro, Mabil,</p>
+    </div>
+
+   
+
+
+    
+  <section id="organograma">
+    <h2>NOTA</h2>
+    <div class="organograma">
+      <img src="image/banho.jpg" alt="Organograma do FIPAG">
+    </div>
+  </section>
+
+  <footer>
+    © 2025 FIPAG - Fundo de Investimento e Património do Abastecimento de Água
+  </footer>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    // Código para abrir e fechar as secções do acordeão
+    const accordions = document.querySelectorAll(".accordion");
+
+    accordions.forEach(acc => {
+      acc.addEventListener("click", function() {
+        this.classList.toggle("active");
+        const panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

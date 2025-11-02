@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estrutura Orgânica - FIPAG</title>
+
+  <!-- ==================== CSS ==================== -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f7;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #0077b6;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    section {
+      width: 90%;
+      max-width: 1100px;
+      margin: 30px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #0077b6;
+      border-left: 5px solid #0077b6;
+      padding-left: 10px;
+    }
+
+    /* BLOCO - ESTRUTURA ORGÂNICA */
+    .orga-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .orga-item {
+      flex: 1 1 300px;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+
+    .orga-item span {
+      display: inline-block;
+      width: 60px;
+      height: 60px;
+      background: #5685b3;
+      color: white;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 60px;
+      font-weight: bold;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    /* UNIDADES ORGÂNICAS */
+    .accordion {
+      background: #0077b6;
+      color: white;
+      cursor: pointer;
+      padding: 15px;
+      margin-top: 10px;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 16px;
+      transition: background 0.3s;
+      border-radius: 5px;
+      width: 100%;
+    }
+
+    .accordion:hover {
+      background: #005f87;
+    }
+
+    .panel {
+      padding: 0 15px;
+      background-color: #f7f7f7;
+      display: none;
+      overflow: hidden;
+      border-left: 3px solid #0077b6;
+      margin-bottom: 10px;
+      border-radius: 0 0 5px 5px;
+    }
+
+    /* ORGANOGRAMA */
+    .organograma {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .organograma img {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+
+    footer {
+      text-align: center;
+      background: #0077b6;
+      color: white;
+      padding: 15px 0;
+      margin-top: 40px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== HTML ==================== -->
+
+  <header>Estrutura Orgânica do FIPAG</header>
+
+  <section id="estrutura">
+    <h2>Estrutura Orgânica</h2>
+    <div class="orga-container">
+
+      <div class="orga-item">
+        <span>1</span>
+        <h3>Conselho Directivo</h3>
+        <p>
+          É o órgão de gestão constituído pelo Director-Geral e pelos Directores dos Serviços Centrais. 
+          O Director-Geral é nomeado pelo Primeiro-Ministro sob proposta do Ministro das Obras Públicas, Habitação e Recursos Hídricos. 
+          Os Directores dos Serviços Centrais são nomeados pelo mesmo Ministro sob proposta do Director-Geral do FIPAG.
+        </p>
+      </div>
+
+      <div class="orga-item">
+        <span>2</span>
+        <h3>Conselho Fiscal</h3>
+        <p>
+          É o órgão de fiscalização do FIPAG, composto por um Presidente e dois Vogais. 
+          Os seus membros são nomeados pelo Ministro da Economia e Finanças por um mandato de três anos.
+        </p>
+      </div>
+
+      <div class="orga-item">
+        <span>3</span>
+        <h3>Conselho Técnico</h3>
+        <p>
+          É um órgão de consulta que assegura o suporte técnico ao funcionamento do FIPAG, composto por Directores de Serviços Centrais, Chefes de Gabinetes e Departamentos. 
+          É presidido pelo Director-Geral e, sempre que necessário, pode incluir outros técnicos convidados.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="unidades">
+    <h2>Unidades Orgânicas</h2>
+
+    <button class="accordion">Serviços Centrais de Projectos e Investimentos</button>
+    <div class="panel">
+      <p>Responsável pelo desenvolvimento e execução dos projectos e investimentos do abastecimento de água.</p>
+    </div>
+
+    <button class="accordion">Serviços Centrais de Operações</button>
+    <div class="panel">
+      <p>Responsável pela operação e manutenção das infra-estruturas de distribuição de água.</p>
+    </div>
+
+    <button class="accordion">Serviços Centrais de Administração e Finanças</button>
+    <div class="panel">
+      <p>Garante a gestão financeira, administrativa e contabilística do FIPAG.</p>
+    </div>
+
+    <button class="accordion">Serviços Centrais de Recursos Humanos</button>
+    <div class="panel">
+      <p>Responsável pela gestão e valorização do capital humano do FIPAG.</p>
+    </div>
+
+    <button class="accordion">Serviços Centrais de Planificação e Desenvolvimento</button>
+    <div class="panel">
+      <p>Assegura o planeamento estratégico e o desenvolvimento organizacional.</p>
+    </div>
+
+    <button class="accordion">Gabinete Jurídico</button>
+    <div class="panel">
+      <p>Presta apoio jurídico e garante a conformidade legal das actividades do FIPAG.</p>
+    </div>
+
+    <button class="accordion">Gabinete de Auditoria Interna</button>
+    <div class="panel">
+      <p>Fiscaliza a correcta aplicação dos recursos e promove a transparência na gestão.</p>
+    </div>
+
+    <button class="accordion">Unidade Gestora Executora de Aquisições</button>
+    <div class="panel">
+      <p>Gere e executa os processos de aquisição, assegurando a conformidade com a legislação aplicável.</p>
+    </div>
+  </section>
+
+  <section id="organograma">
+    <h2>Organograma</h2>
+    <div class="organograma">
+      <img src="image/organograma.jpg" alt="Organograma do FIPAG">
+    </div>
+  </section>
+
+  <footer>
+    © 2025 FIPAG - Fundo de Investimento e Património do Abastecimento de Água
+  </footer>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    // Código para abrir e fechar as secções do acordeão
+    const accordions = document.querySelectorAll(".accordion");
+
+    accordions.forEach(acc => {
+      acc.addEventListener("click", function() {
+        this.classList.toggle("active");
+        const panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
